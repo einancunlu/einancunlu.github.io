@@ -1,0 +1,89 @@
+@ImgFilesURL: "img/";
+@HomeBGColor: #F1F1F1;
+@HomeBGImg: "img/BG.jpg";
+
+* {
+	margin: 0;
+	padding: 0;
+	color: #1a1a1a;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.clearBoth {
+	clear: both;
+}
+
+body {
+	background: url(@HomeBGImg) @HomeBGColor repeat;
+}
+
+.pageContainer {
+	.page {
+		margin: 0 auto;
+		text-align: center;
+		width: 960px;
+		nav {
+			margin-top: 100px;
+			margin-left: 120px;
+			a {
+				float: left;
+				margin-right: 23px;
+				opacity: 0.5;
+				&:hover {
+					opacity: 1;
+				}
+			}
+			a.seperator {
+				width: 0;
+				height: 95px;
+				margin-top: -21px;
+				border-left: solid 1px #cbcbcb;
+				border-right: solid 1px white;
+			}
+			.navItem(@BGImgName, @BGHoveredPosition, @width, @height) {
+				background: url("@{ImgFilesURL}@{BGImgName}") no-repeat;
+				background-position: @BGHoveredPosition;
+				width: @width;
+				height: @height;
+				&:hover {
+					background-image: url("@{ImgFilesURL}@{BGImgName}") no-repeat;
+					background-position: 0px 0px;
+					
+				}
+			}
+			a.blog {
+				.navItem("blog.png", 0px -57px, 105px, 57px);
+			}
+			a.tavsiyeler {
+				.navItem("tavsiyeler.png", 0px -57px, 152px, 57px);
+			}
+			a.projelerim {
+				.navItem("projelerim.png", 0px -57px, 165px, 57px);
+			}
+			a.hakkimda {
+				.navItem("hakkimda.png", 0px -57px, 152px, 57px);
+			}
+		}
+		
+		.body {
+			img.life {
+				margin-top: 30px;
+			}
+		}
+	}
+}
+
+		&:before {
+		    content: ' ';
+		    position: absolute;
+		    left: 0;
+		    right: 0;
+		    top: 0;
+		    bottom: 0;
+		    background-color: rgba(22,184,238,0.70);
+		}
