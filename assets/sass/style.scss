@@ -28,6 +28,8 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 input:-moz-placeholder { color:#a9a9a9; }
 textarea:-moz-placeholder { color:#a9a9a9; }
 
+$notSmall: "(min-width: 636px)";
+
 body.languruAppPage {
 	$darkBlue: #2C7FB7;
 	
@@ -66,20 +68,41 @@ body.languruAppPage {
 			margin-bottom: 5px;
 			position: relative;
 			
-			img.playButton {
+			img.playButtonMobile {
 				position: absolute;
-				top: 385px;
-				left: 239px;
-				z-index: 3; 
+				top: 243px;
+				left: 87px;
+				z-index: 3;
+				
+				@media #{$notSmall} {
+					display: none;
+				}
+			}
+			img.playButton {
+				display: none;
+								
+				@media #{$notSmall} {
+					display: block;
+					position: absolute;
+					top: 385px;
+					left: 239px;
+					z-index: 3;
+				}
 			}
 			img.iPhone {
-				position: absolute;
-				top: 142px;
-				left: 152px;
-				z-index: 2; 
+				@media #{$notSmall} {
+					position: absolute;
+					top: 142px;
+					left: 152px;
+					z-index: 2;
+				}
 			}
 			img.iPadFrame {
+				display: none;
 				
+				@media #{$notSmall} {
+					display: block;
+				}
 			}
 		}
 		.footerText {

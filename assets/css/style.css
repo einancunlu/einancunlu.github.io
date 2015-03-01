@@ -151,17 +151,44 @@ body.languruAppPage .wrapper a.appPreviewContainer {
   margin-bottom: 5px;
   position: relative;
 }
-body.languruAppPage .wrapper a.appPreviewContainer img.playButton {
+body.languruAppPage .wrapper a.appPreviewContainer img.playButtonMobile {
   position: absolute;
-  top: 385px;
-  left: 239px;
+  top: 243px;
+  left: 87px;
   z-index: 3;
 }
-body.languruAppPage .wrapper a.appPreviewContainer img.iPhone {
-  position: absolute;
-  top: 142px;
-  left: 152px;
-  z-index: 2;
+@media (min-width: 636px) {
+  body.languruAppPage .wrapper a.appPreviewContainer img.playButtonMobile {
+    display: none;
+  }
+}
+body.languruAppPage .wrapper a.appPreviewContainer img.playButton {
+  display: none;
+}
+@media (min-width: 636px) {
+  body.languruAppPage .wrapper a.appPreviewContainer img.playButton {
+    display: block;
+    position: absolute;
+    top: 385px;
+    left: 239px;
+    z-index: 3;
+  }
+}
+@media (min-width: 636px) {
+  body.languruAppPage .wrapper a.appPreviewContainer img.iPhone {
+    position: absolute;
+    top: 142px;
+    left: 152px;
+    z-index: 2;
+  }
+}
+body.languruAppPage .wrapper a.appPreviewContainer img.iPadFrame {
+  display: none;
+}
+@media (min-width: 636px) {
+  body.languruAppPage .wrapper a.appPreviewContainer img.iPadFrame {
+    display: block;
+  }
 }
 body.languruAppPage .wrapper .footerText {
   margin-top: 15px;
