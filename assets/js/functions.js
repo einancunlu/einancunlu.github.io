@@ -6,7 +6,7 @@
 // b.setAttribute('data-useragent',  navigator.userAgent);
 // b.setAttribute('data-platform', navigator.platform);
 
-var s = skrollr.init();
+var s = skrollr.init({mobileCheck: function(){ return false }});
 
 // remap jQuery to $
 (function($){
