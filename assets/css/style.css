@@ -96,6 +96,24 @@ textarea:-moz-placeholder {
   color: #a9a9a9;
 }
 
+.wrapper {
+  max-width: 960px;
+  padding: 0px 15px;
+  margin: 0px auto;
+  text-align: center;
+}
+
+body.home a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 body.languruAppPage .wrapper {
   font-family: 'Open Sans', sans-serif;
   padding-bottom: 50px;
@@ -161,7 +179,7 @@ body.languruAppPage .wrapper a.appPreviewContainer img.playButton {
     position: absolute;
     top: 142px;
     left: 152px;
-    z-index: 2;
+    z-index: 1;
   }
 }
 body.languruAppPage .wrapper a.appPreviewContainer img.iPadFrame {
@@ -182,10 +200,6 @@ body.languruAppPage .wrapper .footerText .title {
   font-weight: 400;
   color: #2c7fb7;
 }
-
-.wrapper {
-  max-width: 960px;
-  padding: 0px 15px;
-  margin: 0px auto;
-  text-align: center;
+body.languruAppPage .wrapper .credit {
+  color: #999999;
 }

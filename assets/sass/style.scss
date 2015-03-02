@@ -3,6 +3,10 @@
 @import "compass/css3/border-radius";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 
+
+// ---------------------------------------------------------------------------------------
+
+
 /* A Linux- and Windows-friendly sans-serif font stack: http://prospects.mhurrell.co.uk/post/updating-the-helvetica-font-stack */
 body {font: 13px Helmet, Freesans, sans-serif;}
 
@@ -22,7 +26,56 @@ a:hover {color: #69f;}
 input:-moz-placeholder { color:#a9a9a9; }
 textarea:-moz-placeholder { color:#a9a9a9; }
 
+
+// ---------------------------------------------------------------------------------------
+
+
+@mixin centre($axis: "both") { 
+	position:absolute; 
+	@if $axis == "y" { 
+		top:50%; 
+		-webkit-transform: translateY(-50%); 
+		-moz-transform: translateY(-50%); 
+		-ms-transform: translateY(-50%); 
+		-o-transform: translateY(-50%); 
+		transform: translateY(-50%); 
+	} 
+	@if $axis == "x" { 
+		left:50%; 
+		-webkit-transform: translateX(-50%); 
+		-moz-transform: translateX(-50%); 
+		-ms-transform: translateX(-50%); 
+		-o-transform: translateX(-50%); 
+		transform: translateX(-50%); 
+	} 
+	@if $axis == "both" { 
+		top:50%; left:50%; 
+		-webkit-transform: translate(-50%, -50%); 
+		-moz-transform: translate(-50%, -50%); 
+		-ms-transform: translate(-50%, -50%); 
+		-o-transform: translate(-50%, -50%); 
+		transform: translate(-50%, -50%); 
+	}
+}
+
+
+// ---------------------------------------------------------------------------------------
+
+
 $notSmall: "(min-width: 636px)";
+
+.wrapper {
+	max-width: 960px;
+	padding: 0px 15px;
+	margin: 0px auto;
+	text-align: center;
+}
+
+body.home {
+	a {
+		@include centre;
+	}
+}
 
 body.languruAppPage {
 	$darkBlue: #2C7FB7;
@@ -88,7 +141,7 @@ body.languruAppPage {
 					position: absolute;
 					top: 142px;
 					left: 152px;
-					z-index: 2;
+					z-index: 1;
 				}
 			}
 			img.iPadFrame {
@@ -110,13 +163,8 @@ body.languruAppPage {
 				color: $darkBlue;
 			}
 		}
+		.credit {
+			color: darken(white, 40%);
+		}
 	}
 }
-
-.wrapper {
-	max-width: 960px;
-	padding: 0px 15px;
-	margin: 0px auto;
-	text-align: center;
-}
-

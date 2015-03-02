@@ -8,6 +8,17 @@
 
 var s = skrollr.init({mobileCheck: function(){ return false }});
 
+/*
+$(".appPreviewContainer").click(function() {
+	$(".playButtonMobile").hide()
+	$(".playButton").hide()
+	$("button.play").click()
+	return false;
+});
+*/
+
+$(".appPreviewContainer").colorbox({iframe:true, innerWidth:263, innerHeight:468, closeButton: false, fixed: true});
+
 // remap jQuery to $
 (function($){
 
