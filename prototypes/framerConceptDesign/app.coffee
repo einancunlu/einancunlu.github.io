@@ -14,6 +14,9 @@ sketch = Framer.Importer.load("imported/Design@1x")
 Framer.Extras.Hints.disable()
 document.body.style.cursor = "auto"
 
+sketch.presentation.props = originX: 0, originY: 0
+sketch.presentation.center()
+
 # VARIABLES
 
 animationOptionsSpring = {curve: "spring(300, 35, 0)"}
