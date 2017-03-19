@@ -137,7 +137,7 @@ Layer::addMenuTapAction = () ->
 	if this.name isnt "closeSection"
 		this.onTap ->
 			layer = this
-			Utils.delay 0.2, ->
+			Utils.delay 0.1, ->
 				sectionName = layer.name.substring(11)
 				activeCodeSections[layer.name.substring(6,7)] = layer.name.substring(5)
 				selectSection(sectionName)
@@ -150,7 +150,7 @@ for item in sketch.menuLevel2.children
 	item.addMenuTapAction()
 
 sketch.closeSection.onTap ->
-	Utils.delay 0.2, ->
+	Utils.delay 0.1, ->
 		previousSections.pop()
 		activeCodeSections[rightClickedSection.substring(1,2)] = null
 		sectionName = previousSections[previousSections.length-1]
