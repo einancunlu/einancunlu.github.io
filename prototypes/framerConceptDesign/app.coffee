@@ -1,11 +1,11 @@
 
-##############################################################
-
 # INFO
 
 Framer.Info =
 	title: "Framer Feature Ideas"
 	author: "Emin İnanç Ünlü"
+
+##############################################################
 
 # PROJECT
 
@@ -19,8 +19,10 @@ document.body.style.cursor = "auto"
 animationOptionsSpring = {curve: "spring(300, 35, 0)"}
 animationOptionsFastEase = {curve: "ease", time: 0.15}
 animationOptionsEase = {curve: "ease", time: 0.3}
-macOSBackgroundBlurStyle = "-webkit-backdrop-filter": "blur(10px)"
 supportsCSSBackdropFilter = CSS.supports("(-webkit-backdrop-filter: blur())")
+macOSBackgroundBlurStyle = "-webkit-backdrop-filter": "blur(10px)"
+if !supportsCSSBackdropFilter
+	macOSBackgroundBlurStyle = "background-color": "#DFDFDF"
 
 activePanel = null
 rightClick = false
@@ -104,7 +106,9 @@ Events.wrap(window).addEventListener "keyup", (event) ->
 
 # CODE NAVIGATION
 
-sketch.codeNavigationDropdownMenuBG.style = macOSBackgroundBlurStyle
+sketch.codeNavigationDropdownMenuBG.props = 
+	style: macOSBackgroundBlurStyle
+	borderRadius: 5
 sketch.codeNavigationDropdownMenuBG.changeMouseOnHover("auto")
 sketch.codeNavigationDropdownMenu.addOpacityToggleState()
 
@@ -137,7 +141,7 @@ Layer::addMenuTapAction = () ->
 	if this.name isnt "closeSection"
 		this.onTap ->
 			layer = this
-			Utils.delay 0.1, ->
+			Utils.delay 0.2, ->
 				sectionName = layer.name.substring(11)
 				activeCodeSections[layer.name.substring(6,7)] = layer.name.substring(5)
 				selectSection(sectionName)
@@ -150,7 +154,7 @@ for item in sketch.menuLevel2.children
 	item.addMenuTapAction()
 
 sketch.closeSection.onTap ->
-	Utils.delay 0.1, ->
+	Utils.delay 0.2, ->
 		previousSections.pop()
 		activeCodeSections[rightClickedSection.substring(1,2)] = null
 		sectionName = previousSections[previousSections.length-1]
@@ -500,5 +504,3 @@ sketch.layers.on "change:height", ->
 		if layer.id > clickedLayer.id
 			layer.y -= deltaY
 
-
-##############################################################
