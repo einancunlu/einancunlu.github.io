@@ -19,6 +19,9 @@ sketch.presentation.center()
 
 # VARIABLES
 
+isNotSafari = !Utils.isSafari()
+print CSS.supports("font-family: SFUIText-Semibold")
+
 animationOptionsSpring = {curve: "spring(300, 35, 0)"}
 animationOptionsFastEase = {curve: "ease", time: 0.15}
 animationOptionsEase = {curve: "ease", time: 0.3}
@@ -118,7 +121,7 @@ sketch.codeNavigationDropdownMenu.addOpacityToggleState()
 showCodeNavigationDropdownMenu = (mousePoint) ->
 	newPanelOpened(sketch.codeNavigationDropdownMenu)
 	sketch.codeNavigationDropdownMenu.animate("default")
-	mousePoint = {x: mousePoint.x - 33, y: mousePoint.y - 55}
+	mousePoint = {x: mousePoint.x - 8, y: mousePoint.y - 7}
 	mousePoint = Canvas.convertPointToLayer(mousePoint, sketch.framerWindow)
 	sketch.codeNavigationDropdownMenu.point = mousePoint
 
@@ -174,8 +177,10 @@ sketch.closeSection.onTap ->
 sketch.codeNavigationBar.visible = false
 sketch.codeSectionsReference.visible = false
 text = sketch.rootSection.children[0].convertToTextLayer()
+if isNotSafari then text.fontFamily = alternativeFont
 text.centerY(-2)
 text = sketch.codeSection.children[0].convertToTextLayer()
+if isNotSafari then text.fontFamily = alternativeFont
 text.autoSize = true
 text.centerY(0.5)
 
@@ -358,12 +363,15 @@ layerListItems = [
 	"01_bg"
 ]
 
+alternativeFont = "Helvetica"
+
 ##############################################################
 # CREATION AND HOVER
 
 parentLayerLabel = sketch.parentLayer.children[1].convertToTextLayer()
 parentLayerLabel.centerY(-1)
 parentLayerLabel.autoSize = true
+if isNotSafari then parentLayerLabel.fontFamily = alternativeFont
 
 parentLayerBG = sketch.parentLayer.children[0]
 parentLayerBG.props = 
@@ -374,6 +382,7 @@ parentLayerBG.props =
 generateLayerItems = () ->
 	reference = sketch.layerListItemReference
 	label = reference.children[3].convertToTextLayer()
+	if isNotSafari then label.fontFamily = alternativeFont
 	label.centerY(-2)
 	label.x += 1
 	label.name = "label"
@@ -508,15 +517,3 @@ sketch.layers.on "change:height", ->
 		if layer.id > clickedLayer.id
 			layer.y -= deltaY
 
-
-a = new Layer
-	backgroundColor: "red"
-b = new Layer
-	parent: a
-	x: 50
-	y: 30
-	backgroundColor: "blue"
-print Canvas.convertPointToLayer(a.point, b)
-b.onTap (event) ->
-	print event.point
-	print Canvas.convertPointToLayer(event.point, b)

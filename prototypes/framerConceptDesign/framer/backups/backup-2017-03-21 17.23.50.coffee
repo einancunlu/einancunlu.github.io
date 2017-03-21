@@ -118,8 +118,8 @@ sketch.codeNavigationDropdownMenu.addOpacityToggleState()
 showCodeNavigationDropdownMenu = (mousePoint) ->
 	newPanelOpened(sketch.codeNavigationDropdownMenu)
 	sketch.codeNavigationDropdownMenu.animate("default")
-	mousePoint = {x: mousePoint.x - 33, y: mousePoint.y - 55}
-	
+	mousePoint = {x: mousePoint.x - 8, y: mousePoint.y - 7}
+	mousePoint = Canvas.convertPointToLayer(mousePoint, sketch.framerWindow)
 	sketch.codeNavigationDropdownMenu.point = mousePoint
 
 Layer::addMenuTapAction = () ->
@@ -362,6 +362,7 @@ layerListItems = [
 # CREATION AND HOVER
 
 parentLayerLabel = sketch.parentLayer.children[1].convertToTextLayer()
+
 parentLayerLabel.centerY(-1)
 parentLayerLabel.autoSize = true
 
@@ -508,8 +509,3 @@ sketch.layers.on "change:height", ->
 		if layer.id > clickedLayer.id
 			layer.y -= deltaY
 
-
-a = new Lay
-sketch.presentation.onTap (event) ->
-	print event.point
-	print Canvas.convertPointToLayer(event.point, sketch.framerWindow)

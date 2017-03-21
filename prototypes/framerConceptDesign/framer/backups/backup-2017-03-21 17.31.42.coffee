@@ -19,6 +19,7 @@ sketch.presentation.center()
 
 # VARIABLES
 
+isNotSafari = !Utils.isSafari()
 animationOptionsSpring = {curve: "spring(300, 35, 0)"}
 animationOptionsFastEase = {curve: "ease", time: 0.15}
 animationOptionsEase = {curve: "ease", time: 0.3}
@@ -118,7 +119,8 @@ sketch.codeNavigationDropdownMenu.addOpacityToggleState()
 showCodeNavigationDropdownMenu = (mousePoint) ->
 	newPanelOpened(sketch.codeNavigationDropdownMenu)
 	sketch.codeNavigationDropdownMenu.animate("default")
-	mousePoint = {x: mousePoint.x - 33, y: mousePoint.y - 55}
+	mousePoint = {x: mousePoint.x - 8, y: mousePoint.y - 7}
+	mousePoint = Canvas.convertPointToLayer(mousePoint, sketch.framerWindow)
 	sketch.codeNavigationDropdownMenu.point = mousePoint
 
 Layer::addMenuTapAction = () ->
@@ -361,9 +363,11 @@ layerListItems = [
 # CREATION AND HOVER
 
 parentLayerLabel = sketch.parentLayer.children[1].convertToTextLayer()
+
 parentLayerLabel.centerY(-1)
 parentLayerLabel.autoSize = true
-
+if !Utils.isSafari()
+	parentLayerLabel.fontFamily = "Helvetica"
 parentLayerBG = sketch.parentLayer.children[0]
 parentLayerBG.props = 
 	backgroundColor: "666666"

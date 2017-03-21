@@ -13,7 +13,9 @@ sketch = Framer.Importer.load("imported/Design@1x")
 {TextLayer} = require 'TextLayer'
 Framer.Extras.Hints.disable()
 document.body.style.cursor = "auto"
-# sketch.presentation.center()
+
+sketch.presentation.props = originX: 0, originY: 0
+sketch.presentation.center()
 
 # VARIABLES
 
@@ -116,7 +118,8 @@ sketch.codeNavigationDropdownMenu.addOpacityToggleState()
 showCodeNavigationDropdownMenu = (mousePoint) ->
 	newPanelOpened(sketch.codeNavigationDropdownMenu)
 	sketch.codeNavigationDropdownMenu.animate("default")
-	mousePoint = {x: mousePoint.x - 33, y: mousePoint.y - 55}
+	mousePoint = {x: mousePoint.x - 8, y: mousePoint.y - 7}
+	mousePoint = Canvas.convertPointToLayer(mousePoint, sketch.framerWindow)
 	sketch.codeNavigationDropdownMenu.point = mousePoint
 
 Layer::addMenuTapAction = () ->
@@ -359,9 +362,11 @@ layerListItems = [
 # CREATION AND HOVER
 
 parentLayerLabel = sketch.parentLayer.children[1].convertToTextLayer()
+
 parentLayerLabel.centerY(-1)
 parentLayerLabel.autoSize = true
-
+if !Utils.isSafari()
+	parentLayerLabel.fontFamily = "Helvetica"
 parentLayerBG = sketch.parentLayer.children[0]
 parentLayerBG.props = 
 	backgroundColor: "666666"
