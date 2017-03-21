@@ -19,6 +19,9 @@ sketch.presentation.center()
 
 # VARIABLES
 
+isNotSafari = !Utils.isSafari()
+
+alternativeFont = "SFUIText-Medium, Sans-Serif"
 animationOptionsSpring = {curve: "spring(300, 35, 0)"}
 animationOptionsFastEase = {curve: "ease", time: 0.15}
 animationOptionsEase = {curve: "ease", time: 0.3}
@@ -174,8 +177,10 @@ sketch.closeSection.onTap ->
 sketch.codeNavigationBar.visible = false
 sketch.codeSectionsReference.visible = false
 text = sketch.rootSection.children[0].convertToTextLayer()
+if isNotSafari then text.fontFamily = alternativeFont
 text.centerY(-2)
 text = sketch.codeSection.children[0].convertToTextLayer()
+if isNotSafari then text.fontFamily = alternativeFont
 text.autoSize = true
 text.centerY(0.5)
 
@@ -364,6 +369,7 @@ layerListItems = [
 parentLayerLabel = sketch.parentLayer.children[1].convertToTextLayer()
 parentLayerLabel.centerY(-1)
 parentLayerLabel.autoSize = true
+if isNotSafari then parentLayerLabel.fontFamily = alternativeFont
 
 parentLayerBG = sketch.parentLayer.children[0]
 parentLayerBG.props = 
@@ -374,6 +380,7 @@ parentLayerBG.props =
 generateLayerItems = () ->
 	reference = sketch.layerListItemReference
 	label = reference.children[3].convertToTextLayer()
+	if isNotSafari then label.fontFamily = alternativeFont
 	label.centerY(-2)
 	label.x += 1
 	label.name = "label"
