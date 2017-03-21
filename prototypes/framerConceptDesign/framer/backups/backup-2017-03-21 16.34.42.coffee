@@ -1,11 +1,11 @@
 
-##############################################################
-
 # INFO
 
 Framer.Info =
 	title: "Framer Feature Ideas"
 	author: "Emin İnanç Ünlü"
+
+##############################################################
 
 # PROJECT
 
@@ -14,13 +14,18 @@ sketch = Framer.Importer.load("imported/Design@1x")
 Framer.Extras.Hints.disable()
 document.body.style.cursor = "auto"
 
+sketch.presentation.props = originX: 0, originY: 0
+sketch.presentation.center()
+
 # VARIABLES
 
 animationOptionsSpring = {curve: "spring(300, 35, 0)"}
 animationOptionsFastEase = {curve: "ease", time: 0.15}
 animationOptionsEase = {curve: "ease", time: 0.3}
-macOSBackgroundBlurStyle = "-webkit-backdrop-filter": "blur(10px)"
 supportsCSSBackdropFilter = CSS.supports("(-webkit-backdrop-filter: blur())")
+macOSBackgroundBlurStyle = "-webkit-backdrop-filter": "blur(10px)"
+if !supportsCSSBackdropFilter
+	macOSBackgroundBlurStyle = "background-color": "#DFDFDF"
 
 activePanel = null
 rightClick = false
@@ -104,7 +109,9 @@ Events.wrap(window).addEventListener "keyup", (event) ->
 
 # CODE NAVIGATION
 
-sketch.codeNavigationDropdownMenuBG.style = macOSBackgroundBlurStyle
+sketch.codeNavigationDropdownMenuBG.props = 
+	style: macOSBackgroundBlurStyle
+	borderRadius: 5
 sketch.codeNavigationDropdownMenuBG.changeMouseOnHover("auto")
 sketch.codeNavigationDropdownMenu.addOpacityToggleState()
 
@@ -501,4 +508,8 @@ sketch.layers.on "change:height", ->
 			layer.y -= deltaY
 
 
-##############################################################
+sketch.presentation.onTap (event) ->
+	a = new Layer 
+		width: 4, height: 4
+		backgroundColor: "red"
+		point: event.point

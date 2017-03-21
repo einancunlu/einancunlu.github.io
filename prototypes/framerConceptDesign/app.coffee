@@ -118,7 +118,8 @@ sketch.codeNavigationDropdownMenu.addOpacityToggleState()
 showCodeNavigationDropdownMenu = (mousePoint) ->
 	newPanelOpened(sketch.codeNavigationDropdownMenu)
 	sketch.codeNavigationDropdownMenu.animate("default")
-	mousePoint = {x: mousePoint.x - 33, y: mousePoint.y - 55}
+	mousePoint = {x: mousePoint.x - 8, y: mousePoint.y - 7}
+	mousePoint = Canvas.convertPointToLayer(mousePoint, sketch.framerWindow)
 	sketch.codeNavigationDropdownMenu.point = mousePoint
 
 Layer::addMenuTapAction = () ->

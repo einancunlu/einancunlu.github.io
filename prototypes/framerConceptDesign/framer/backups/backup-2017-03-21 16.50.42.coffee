@@ -1,11 +1,11 @@
 
-##############################################################
-
 # INFO
 
 Framer.Info =
 	title: "Framer Feature Ideas"
 	author: "Emin İnanç Ünlü"
+
+##############################################################
 
 # PROJECT
 
@@ -14,13 +14,18 @@ sketch = Framer.Importer.load("imported/Design@1x")
 Framer.Extras.Hints.disable()
 document.body.style.cursor = "auto"
 
+sketch.presentation.props = originX: 0, originY: 0
+sketch.presentation.center()
+
 # VARIABLES
 
 animationOptionsSpring = {curve: "spring(300, 35, 0)"}
 animationOptionsFastEase = {curve: "ease", time: 0.15}
 animationOptionsEase = {curve: "ease", time: 0.3}
-macOSBackgroundBlurStyle = "-webkit-backdrop-filter": "blur(10px)"
 supportsCSSBackdropFilter = CSS.supports("(-webkit-backdrop-filter: blur())")
+macOSBackgroundBlurStyle = "-webkit-backdrop-filter": "blur(10px)"
+if !supportsCSSBackdropFilter
+	macOSBackgroundBlurStyle = "background-color": "#DFDFDF"
 
 activePanel = null
 rightClick = false
@@ -104,14 +109,17 @@ Events.wrap(window).addEventListener "keyup", (event) ->
 
 # CODE NAVIGATION
 
-sketch.codeNavigationDropdownMenuBG.style = macOSBackgroundBlurStyle
+sketch.codeNavigationDropdownMenuBG.props = 
+	style: macOSBackgroundBlurStyle
+	borderRadius: 5
 sketch.codeNavigationDropdownMenuBG.changeMouseOnHover("auto")
 sketch.codeNavigationDropdownMenu.addOpacityToggleState()
 
 showCodeNavigationDropdownMenu = (mousePoint) ->
 	newPanelOpened(sketch.codeNavigationDropdownMenu)
 	sketch.codeNavigationDropdownMenu.animate("default")
-	mousePoint = {x: mousePoint.x - 33, y: mousePoint.y - 55}
+	mousePoint = {x: mousePoint.x - 8, y: mousePoint.y - 7}
+	mousePoint = Canvas.convertPointToLayer(mousePoint, sketch.framerWindow)
 	sketch.codeNavigationDropdownMenu.point = mousePoint
 
 Layer::addMenuTapAction = () ->
@@ -136,10 +144,12 @@ Layer::addMenuTapAction = () ->
 		selectionBG.visible = true
 	if this.name isnt "closeSection"
 		this.onTap ->
-			sectionName = this.name.substring(11)
-			activeCodeSections[this.name.substring(6,7)] = this.name.substring(5)
-			selectSection(sectionName)
-			closeActivePanel()
+			layer = this
+			Utils.delay 0.2, ->
+				sectionName = layer.name.substring(11)
+				activeCodeSections[layer.name.substring(6,7)] = layer.name.substring(5)
+				selectSection(sectionName)
+				closeActivePanel()
  
 sketch.closeSection.addMenuTapAction()
 for item in sketch.menuLevel1.children
@@ -148,17 +158,18 @@ for item in sketch.menuLevel2.children
 	item.addMenuTapAction()
 
 sketch.closeSection.onTap ->
-	previousSections.pop()
-	activeCodeSections[rightClickedSection.substring(1,2)] = null
-	sectionName = previousSections[previousSections.length-1]
-	recreateCodeSectionsNavigation(sectionName)
-	selectSection(sectionName)
-	closeActivePanel()
-	leftover = false
-	for item in activeCodeSections
-		if !item then continue
-		leftover = true
-	if !leftover then closeCodeNavigationBar()
+	Utils.delay 0.2, ->
+		previousSections.pop()
+		activeCodeSections[rightClickedSection.substring(1,2)] = null
+		sectionName = previousSections[previousSections.length-1]
+		recreateCodeSectionsNavigation(sectionName)
+		selectSection(sectionName)
+		closeActivePanel()
+		leftover = false
+		for item in activeCodeSections
+			if !item then continue
+			leftover = true
+		if !leftover then closeCodeNavigationBar()
 
 sketch.codeNavigationBar.visible = false
 sketch.codeSectionsReference.visible = false
@@ -277,73 +288,73 @@ layerListItems = [
 	"03_navBarDefaultContent",
 	"04_filterIcon",
 	"04_postIcon",
-# 	"04_momentsSections",
-# 	"05_followingSection",
-# 	"05_matchSection",
-# 	"04_i_filtersInfo",
-# 	"03_navBarFilterPanelContent",
-# 	"04_resetFiltersButton",
-# 	"04_applyFiltersButton",
-# 	"02_filterPanel",
-# 	"03_filterPanelNotFiltered",
-# 	"03_i_filterPanelFiltered",
-# 	"02_filterPanelOverlay",
-# 	"02_sections",
-# 	"03_content",
-# 	"04_itemList2",
-# 	"05_content",
-# 	"06_postButton",
-# 	"06_item",
-# 	"06_item1",
-# 	"06_newMembers",
-# 	"07_newMemberList",
-# 	"08_content",
-# 	"09_item5",
-# 	"10_playIcon",
-# 	"10_content",
-# 	"09_item6",
-# 	"09_item7",
-# 	"10_playIcon1",
-# 	"10_content1",
-# 	"09_item8",
-# 	"06_item2",
-# 	"06_item3",
-# 	"06_item4",
-# 	"04_itemList1",
-# 	"05_content",
-# 	"06_postButton",
-# 	"06_item",
-# 	"06_item1",
-# 	"06_newMembers",
-# 	"07_newMemberList",
-# 	"08_content",
-# 	"09_item5",
-# 	"10_playIcon",
-# 	"10_content",
-# 	"09_item6",
-# 	"09_item7",
-# 	"10_playIcon1",
-# 	"10_content1",
-# 	"09_item8",
-# 	"06_item2",
-# 	"06_item3",
-# 	"06_item4",
-# 	"01_i_overlay",
-# 	"00_newPostScreen",
-# 	"01_sendPostButton",
-# 	"01_cancelPostButton",
-# 	"01_previousPostingStateButton",
-# 	"01_nextPostingStateButton",
-# 	"01_postCategories",
-# 	"02_i_postCategories4",
-# 	"02_i_postCategories3",
-# 	"02_i_postCategories2",
-# 	"02_postCategories1",
-# 	"01_newPostWrapper",
-# 	"02_newPost1",
-# 	"02_i_newPost2",
-# 	"02_i_newPost3",
-# 	"02_i_newPost4",
+	"04_momentsSections",
+	"05_followingSection",
+	"05_matchSection",
+	"04_i_filtersInfo",
+	"03_navBarFilterPanelContent",
+	"04_resetFiltersButton",
+	"04_applyFiltersButton",
+	"02_filterPanel",
+	"03_filterPanelNotFiltered",
+	"03_i_filterPanelFiltered",
+	"02_filterPanelOverlay",
+	"02_sections",
+	"03_content",
+	"04_itemList2",
+	"05_content",
+	"06_postButton",
+	"06_item",
+	"06_item1",
+	"06_newMembers",
+	"07_newMemberList",
+	"08_content",
+	"09_item5",
+	"10_playIcon",
+	"10_content",
+	"09_item6",
+	"09_item7",
+	"10_playIcon1",
+	"10_content1",
+	"09_item8",
+	"06_item2",
+	"06_item3",
+	"06_item4",
+	"04_itemList1",
+	"05_content",
+	"06_postButton",
+	"06_item",
+	"06_item1",
+	"06_newMembers",
+	"07_newMemberList",
+	"08_content",
+	"09_item5",
+	"10_playIcon",
+	"10_content",
+	"09_item6",
+	"09_item7",
+	"10_playIcon1",
+	"10_content1",
+	"09_item8",
+	"06_item2",
+	"06_item3",
+	"06_item4",
+	"01_i_overlay",
+	"00_newPostScreen",
+	"01_sendPostButton",
+	"01_cancelPostButton",
+	"01_previousPostingStateButton",
+	"01_nextPostingStateButton",
+	"01_postCategories",
+	"02_i_postCategories4",
+	"02_i_postCategories3",
+	"02_i_postCategories2",
+	"02_postCategories1",
+	"01_newPostWrapper",
+	"02_newPost1",
+	"02_i_newPost2",
+	"02_i_newPost3",
+	"02_i_newPost4",
 	"01_bg"
 ]
 
@@ -498,4 +509,14 @@ sketch.layers.on "change:height", ->
 			layer.y -= deltaY
 
 
-##############################################################
+a = new Layer
+	backgroundColor: "red"
+b = new Layer
+	parent: a
+	x: 50
+	y: 30
+	backgroundColor: "blue"
+print Canvas.convertPointToLayer(a.point, b)
+b.onTap (event) ->
+	print event.point
+	print Canvas.convertPointToLayer(event.point, b)
