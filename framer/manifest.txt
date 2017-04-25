@@ -1,0 +1,156 @@
+app.coffee
+framer/backups/backup-2017-04-25 13.29.13.coffee
+framer/backups/backup-2017-04-25 13.30.13.coffee
+framer/backups/backup-2017-04-25 13.31.13.coffee
+framer/backups/backup-2017-04-25 13.32.43.coffee
+framer/backups/backup-2017-04-25 13.34.13.coffee
+framer/backups/backup-2017-04-25 13.35.13.coffee
+framer/backups/backup-2017-04-25 13.36.13.coffee
+framer/backups/backup-2017-04-25 13.37.13.coffee
+framer/backups/backup-2017-04-25 14.19.13.coffee
+framer/backups/backup-2017-04-25 14.20.13.coffee
+framer/backups/backup-2017-04-25 14.21.13.coffee
+framer/backups/backup-2017-04-25 14.22.13.coffee
+framer/backups/backup-2017-04-25 14.23.13.coffee
+framer/backups/backup-2017-04-25 14.24.13.coffee
+framer/backups/backup-2017-04-25 14.25.13.coffee
+framer/backups/backup-2017-04-25 14.26.13.coffee
+framer/backups/backup-2017-04-25 14.27.13.coffee
+framer/backups/backup-2017-04-25 14.28.13.coffee
+framer/backups/backup-2017-04-25 14.29.13.coffee
+framer/backups/backup-2017-04-25 14.30.13.coffee
+framer/backups/backup-2017-04-25 14.32.13.coffee
+framer/coffee-script.js
+framer/config.json
+framer/framer.generated.js
+framer/framer.init.js
+framer/framer.js
+framer/framer.js.map
+framer/framer.modules.js
+framer/images/cursor-active.png
+framer/images/cursor-active@2x.png
+framer/images/cursor.png
+framer/images/cursor@2x.png
+framer/images/icon-120.png
+framer/images/icon-152.png
+framer/images/icon-180.png
+framer/images/icon-192.png
+framer/images/icon-76.png
+framer/manifest.txt
+framer/preview.png
+framer/style.css
+framer/version
+imported/Design@1x/images/Layer-angelList-mjddqjyy.png
+imported/Design@1x/images/Layer-bg-nzcxmdq5.png
+imported/Design@1x/images/Layer-cv-mtmymza2.png
+imported/Design@1x/images/Layer-footer-reiwmdyz.png
+imported/Design@1x/images/Layer-github-ntzcnjg1.png
+imported/Design@1x/images/Layer-infoDesktop-rdiynjux.png
+imported/Design@1x/images/Layer-infoMobile-qum1qkq1.png
+imported/Design@1x/images/Layer-item-mzi5ruy4.png
+imported/Design@1x/images/Layer-item-mzm5mtnd.jpg
+imported/Design@1x/images/Layer-item-njm5mtje.jpg
+imported/Design@1x/images/Layer-item-nkyxmevb.png
+imported/Design@1x/images/Layer-item-nui5nuiy.jpg
+imported/Design@1x/images/Layer-item-odzcrufe.jpg
+imported/Design@1x/images/Layer-item-othbmjjb.jpg
+imported/Design@1x/images/Layer-item-otuymzu3.jpg
+imported/Design@1x/images/Layer-item-oufgrta2.jpg
+imported/Design@1x/images/Layer-item-qta3numz.png
+imported/Design@1x/images/Layer-item-rjk4qtc3.jpg
+imported/Design@1x/images/Layer-item-rjnfmdi3.jpg
+imported/Design@1x/images/Layer-item-rthenui0.jpg
+imported/Design@1x/images/Layer-item-rtzcmdi1.jpg
+imported/Design@1x/images/Layer-items2-reu3rkfg.png
+imported/Design@1x/images/Layer-linksPopupAngelList-rda0mjq4.png
+imported/Design@1x/images/Layer-linksPopupCv-ree5ntaw.png
+imported/Design@1x/images/Layer-linksPopupGithub-odvfnemx.png
+imported/Design@1x/images/Layer-linksPopupMedium-mdg0odjc.png
+imported/Design@1x/images/Layer-madeWithIconsColored-q0vgqju4.png
+imported/Design@1x/images/Layer-madeWithIconsSaturated-mtremta0.png
+imported/Design@1x/images/Layer-medium-muffruuw.png
+imported/Design@1x/images/Layer-playIcon-mzy1rjqx.png
+imported/Design@1x/images/Layer-seeMore-rdbeodgz.png
+imported/Design@1x/images/Layer-thereIsMore-ntg1rtey.png
+imported/Design@1x/images/Layer-title1Desktop-ndjbrje2.png
+imported/Design@1x/images/Layer-title1Mobile-qtdfoufe.png
+imported/Design@1x/images/Layer-title2Desktop-nejcrtm2.png
+imported/Design@1x/images/Layer-title2Mobile-odfdq0y4.png
+imported/Design@1x/images/Layer-videoItem-qkqwnenf.jpg
+imported/Design@1x/layers.json
+imported/Design@1x/layers.json.js
+imported/Design@2x/images/Layer-angelList-mjddqjyy.png
+imported/Design@2x/images/Layer-bg-nzcxmdq5.png
+imported/Design@2x/images/Layer-cv-mtmymza2.png
+imported/Design@2x/images/Layer-footer-reiwmdyz.png
+imported/Design@2x/images/Layer-github-ntzcnjg1.png
+imported/Design@2x/images/Layer-infoDesktop-rdiynjux.png
+imported/Design@2x/images/Layer-infoMobile-qum1qkq1.png
+imported/Design@2x/images/Layer-item-mzi5ruy4.png
+imported/Design@2x/images/Layer-item-mzm5mtnd.jpg
+imported/Design@2x/images/Layer-item-njm5mtje.jpg
+imported/Design@2x/images/Layer-item-nkyxmevb.png
+imported/Design@2x/images/Layer-item-nui5nuiy.jpg
+imported/Design@2x/images/Layer-item-odzcrufe.jpg
+imported/Design@2x/images/Layer-item-othbmjjb.jpg
+imported/Design@2x/images/Layer-item-otuymzu3.jpg
+imported/Design@2x/images/Layer-item-oufgrta2.jpg
+imported/Design@2x/images/Layer-item-qta3numz.png
+imported/Design@2x/images/Layer-item-rjk4qtc3.jpg
+imported/Design@2x/images/Layer-item-rjnfmdi3.jpg
+imported/Design@2x/images/Layer-item-rthenui0.jpg
+imported/Design@2x/images/Layer-item-rtzcmdi1.jpg
+imported/Design@2x/images/Layer-items2-reu3rkfg.png
+imported/Design@2x/images/Layer-medium-muffruuw.png
+imported/Design@2x/images/Layer-playIcon-mzy1rjqx.png
+imported/Design@2x/images/Layer-recentDesigns-ntg1rtey.png
+imported/Design@2x/images/Layer-seeMore-rdbeodgz.png
+imported/Design@2x/images/Layer-title1Desktop-ndjbrje2.png
+imported/Design@2x/images/Layer-title1Mobile-qtdfoufe.png
+imported/Design@2x/images/Layer-title2Desktop-nejcrtm2.png
+imported/Design@2x/images/Layer-title2Mobile-odfdq0y4.png
+imported/Design@2x/images/Layer-videoItem-qkqwnenf.jpg
+imported/Design@2x/layers.json
+imported/Design@2x/layers.json.js
+imported/Design@3x/images/Layer-angelList-mjddqjyy.png
+imported/Design@3x/images/Layer-bg-nzcxmdq5.png
+imported/Design@3x/images/Layer-cv-mtmymza2.png
+imported/Design@3x/images/Layer-footer-reiwmdyz.png
+imported/Design@3x/images/Layer-github-ntzcnjg1.png
+imported/Design@3x/images/Layer-infoDesktop-rdiynjux.png
+imported/Design@3x/images/Layer-infoMobile-qum1qkq1.png
+imported/Design@3x/images/Layer-item-mzi5ruy4.png
+imported/Design@3x/images/Layer-item-mzm5mtnd.jpg
+imported/Design@3x/images/Layer-item-njm5mtje.jpg
+imported/Design@3x/images/Layer-item-nkyxmevb.png
+imported/Design@3x/images/Layer-item-nui5nuiy.jpg
+imported/Design@3x/images/Layer-item-odzcrufe.jpg
+imported/Design@3x/images/Layer-item-othbmjjb.jpg
+imported/Design@3x/images/Layer-item-otuymzu3.jpg
+imported/Design@3x/images/Layer-item-oufgrta2.jpg
+imported/Design@3x/images/Layer-item-qta3numz.png
+imported/Design@3x/images/Layer-item-rjk4qtc3.jpg
+imported/Design@3x/images/Layer-item-rjnfmdi3.jpg
+imported/Design@3x/images/Layer-item-rthenui0.jpg
+imported/Design@3x/images/Layer-item-rtzcmdi1.jpg
+imported/Design@3x/images/Layer-items2-reu3rkfg.png
+imported/Design@3x/images/Layer-linksPopupAngelList-rda0mjq4.png
+imported/Design@3x/images/Layer-linksPopupCv-ree5ntaw.png
+imported/Design@3x/images/Layer-linksPopupGithub-odvfnemx.png
+imported/Design@3x/images/Layer-linksPopupMedium-mdg0odjc.png
+imported/Design@3x/images/Layer-madeWithIconsColored-q0vgqju4.png
+imported/Design@3x/images/Layer-madeWithIconsSaturated-mtremta0.png
+imported/Design@3x/images/Layer-medium-muffruuw.png
+imported/Design@3x/images/Layer-playIcon-mzy1rjqx.png
+imported/Design@3x/images/Layer-seeMore-rdbeodgz.png
+imported/Design@3x/images/Layer-thereIsMore-ntg1rtey.png
+imported/Design@3x/images/Layer-title1Desktop-ndjbrje2.png
+imported/Design@3x/images/Layer-title1Mobile-qtdfoufe.png
+imported/Design@3x/images/Layer-title2Desktop-nejcrtm2.png
+imported/Design@3x/images/Layer-title2Mobile-odfdq0y4.png
+imported/Design@3x/images/Layer-videoItem-qkqwnenf.jpg
+imported/Design@3x/layers.json
+imported/Design@3x/layers.json.js
+index.html
+modules/DevicePixelRatio.coffee
+videos/timelapse.mp4
