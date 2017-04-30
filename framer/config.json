@@ -1,13 +1,15 @@
 {
   "orientation" : 0,
   "updateDelay" : 0.3,
+  "cachedDeviceHeight" : 0,
   "contentScale" : 1,
+  "cachedDeviceWidth" : 0,
   "sharedPrototype" : 0,
   "propertyPanelToggleStates" : {
 
   },
   "deviceType" : "fullscreen",
-  "projectId" : "91B3C3EB-55E3-4E30-95F3-C3C337AE9F60",
+  "projectId" : "2D2C5E12-2845-4D9B-BBD0-1EC8290B9003",
   "deviceOrientation" : 0,
   "selectedHand" : "",
   "foldedCodeRanges" : [
