@@ -122,11 +122,11 @@ Layer::makeLink = (link) ->
 		}
 	"""
 	this.ignoreEvents = false
-sketch.medium.makeLink("http://medium.com/@einancunlu")
-sketch.github.makeLink("http://github.com/einancunlu")
-sketch.linkedin.makeLink("http://linkedin.com/in/einancunlu/")
-sketch.angelList.makeLink("http://angel.co/einancunlu")
-sketch.pdfLink.makeLink("https://cl.ly/k2wZ")
+sketch.medium.makeLink("https://cl.ly/kDYC")
+sketch.github.makeLink("https://cl.ly/kEQi")
+sketch.linkedin.makeLink("https://cl.ly/kDw8")
+sketch.angelList.makeLink("https://cl.ly/kDkh")
+sketch.pdfLink.makeLink("https://cl.ly/kEXP")
 
 addMouseOverDetail = (layer) ->
 	label = sketch["#{layer.name}Title"]
