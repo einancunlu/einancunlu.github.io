@@ -1,0 +1,599 @@
+
+
+// ----------------------------------------------------------------------------
+// Imports
+// ----------------------------------------------------------------------------
+
+
+@import "compass";
+
+// Plugins
+@import "retina-sprites";
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+
+
+// ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+
+
+// Fonts
+$main-font-family: "Open Sans", sans-serif;
+$main-font-size: 18px;
+
+// Colors
+$blue: #4083FF;
+$pink: #A24AFF;
+$gradient-blue-pink: linear-gradient(to bottom right, #4083FF, #A24AFF);
+$gradient-pink-blue: linear-gradient(to bottom right, #A24AFF, #4083FF);
+
+
+// ----------------------------------------------------------------------------
+// Functions
+// ----------------------------------------------------------------------------
+
+
+@function black($opacity) {
+  @return rgba(0,0,0,$opacity);
+}
+
+@function white($opacity) {
+  @return rgba(255,255,255,$opacity);
+}
+
+
+// ----------------------------------------------------------------------------
+// Mixins
+// ----------------------------------------------------------------------------
+
+
+@mixin desktop {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin phablet {
+  @media screen and (min-width: 460px) {
+    @content;
+  }
+}
+
+
+// ----------------------------------------------------------------------------
+// Styles
+// ----------------------------------------------------------------------------
+
+
+html {
+  font: 400 $main-font-size $main-font-family;
+}
+img {
+  max-width: 100%;
+}
+a {
+  text-decoration: none;
+}
+p {
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  color: black(0.87);
+
+  @include tablet {
+    font-size: 16px;
+    line-height: 1.5;
+    color: black(0.8);
+  }
+  @include desktop {
+    font-size: 18px;
+    letter-spacing: 0.4px;
+  }
+}
+.rotated-background {
+  position: absolute;
+  top: 0;
+  left: calc(-50vw + 50%);
+  width: 100vw;
+  height: 100%;
+  background-color: black(0.02);
+  z-index: -1;
+  transform: skewY(-1deg);
+}
+
+// Site
+// --------------------------------------------------
+
+.site {
+  margin: 0px auto;
+  max-width: 380px;
+  padding: 32px 20px 0 20px;
+  @supports (grid-area: auto) {
+    display: grid;
+    grid-template-columns: 184fr 116fr;
+    grid-template-rows: auto;
+    grid-column-gap: 20px;
+    grid-template-areas:
+      "title avatar"
+      "account-links account-links"
+      "intro intro"
+      "articles articles"
+      "works works"
+      "footer footer";
+  }
+  @include tablet {
+    max-width: 640px;
+    padding-top: 48px;
+    @supports (grid-area: auto) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas:
+        "title title title avatar"
+        "intro intro intro account-links"
+        "articles articles articles articles"
+        "works works works works"
+        "footer footer footer footer";
+    }
+  }
+  @include desktop {
+    max-width: 940px;
+    padding-top: 64px;
+  }
+
+  // Avatar
+  // --------------------------------------------------
+
+  img.avatar {
+    grid-area: avatar;
+    max-height: 128px;
+
+    @include tablet {
+      max-height: 220px;
+      justify-self: center;
+    }
+  }
+
+  // Account-links
+  // --------------------------------------------------
+
+  section.account-links {
+    position: relative;
+    padding: 20px 0;
+    margin: 28px 0 20px 0;
+    grid-area: account-links;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    @include tablet {
+      max-width: 128px + 16px;
+      padding: 8px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      justify-content: center;
+      justify-self: center;
+    }
+    @include desktop {
+      padding: 0;
+    }
+    a {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: $gradient-pink-blue;
+      overflow: hidden;
+
+      @include tablet {
+        margin: 8px;
+      }
+      div {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    a.linkedin div {
+      @include use-sprite("linkedin");
+      &:hover { background-color: #0077b5; }
+    }
+    a.medium div {
+      @include use-sprite("medium");
+      &:hover { background-color: #12100E; }
+    }
+    a.github div {
+      @include use-sprite("github");
+      &:hover { background-color: #181717; }
+    }
+    a.twitter div {
+      @include use-sprite("twitter");
+      &:hover { background-color: #1DA1F2; }
+    }
+    a.instagram div {
+      @include use-sprite("instagram");
+      &:hover { background-color: #E4405F; }
+    }
+    a.lastfm div {
+      @include use-sprite("lastfm");
+      &:hover { background-color: #D51007; }
+    }
+    .rotated-background {
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+
+  // Title
+  // --------------------------------------------------
+
+  section.title {
+    padding: 0;
+    grid-area: title;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include tablet {
+      justify-content: flex-start;
+    }
+    span.name {
+      display: block;
+      font-size: 4.7vw;
+      letter-spacing: 0.3px;
+      color: black(0.87);
+      margin: 0;
+
+      @include phablet {
+        font-size: 18px;
+        color: black(0.6);
+      }
+      @include desktop {
+        font-size: 24px;
+        margin-bottom: 4px;
+      }
+    }
+    h1.profession {
+      font-size: 5.4vw;
+      font-weight: 600;
+      color: $blue;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      background: $gradient-blue-pink;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @include phablet {
+        font-size: 24px;
+        font-weight: 400;
+      }
+      @include desktop {
+        font-size: 36px;
+        margin-top: 0;
+        margin-bottom: 20px;
+        letter-spacing: 0.8px;
+      }
+    }
+    .short-line {
+      width: 10vw;
+      height: 2px;
+      border-radius: 1px;
+      background-color: $blue;
+
+      @include phablet {
+        width: 38px;
+      }
+      @include desktop {
+        width: 57px;
+      }
+    }
+  }
+
+  // Intro
+  // --------------------------------------------------
+
+  section.intro {
+    grid-area: intro;
+
+    @include tablet {
+      margin-top: -48px;
+    }
+    @include desktop {
+      margin-top: -80px;
+    }
+    p {
+      margin: 8px 0;
+
+      @include tablet {
+        padding-right: 28px;
+      }
+    }
+    p:not(:last-child) {
+      margin-bottom: 16px;
+
+      @include desktop {
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  // Articles
+  // --------------------------------------------------
+
+  section.articles {
+    position: relative;
+    grid-area: articles;
+    padding: 32px 0;
+    margin: 20px 0;
+
+    @include tablet {
+      margin: 32px 0;
+      padding: 42px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+    @include desktop {
+      padding: 64px 0;
+      margin: 48px 0;
+    }
+    .big {
+      flex-grow: 1;
+      flex-basis: 0;
+      max-width: 380px;
+
+      @include tablet {
+        margin-right: 20px;
+      }
+      @include desktop {
+        margin-right: 40px;
+        margin-bottom: 16px;
+      }
+      .uppercase-title {
+        display: block;
+        float: left;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 600;
+        color: black(0.6);
+
+        @include desktop {
+          font-size: 16px;
+        }
+      }
+      a.uppercase-title {
+        float: right;
+        color: black(0.4);
+        &:hover {
+          color: black(0.6);
+        }
+
+        @include tablet {
+          float: left;
+          margin-left: 24px;
+        }
+      }
+      a.featured {
+        display: block;
+
+        @include desktop {
+          padding: 16px;
+          margin: -16px;
+          margin-top: 18px + 20px;
+          border-radius: 4px;
+          background-color: white;
+          border: 1px solid black(0.04);
+        }
+        img {
+          margin-bottom: 12px;
+          border-radius: 4px;
+        }
+      }
+    }
+    .compact {
+      display: none;
+      flex-grow: 1;
+      flex-basis: 0;
+
+      @include tablet {
+        display: block;
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .divider {
+        background-color: black(0.08);
+        width: 100%;
+        height: 1px;
+      }
+      a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:first-child {
+          margin-top: 0;
+          padding-top: 0;
+          border-top: none;
+        }
+        img {
+          flex-shrink: 0;
+          margin-left: 16px;
+          border-radius: 4px;
+        }
+      }
+      .last {
+        display: none;
+
+        @include desktop {
+          display: flex;
+        }
+      }
+    }
+    span.title {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+      font-weight: 600;
+      color: black(0.87);
+
+      @include tablet {
+        margin-bottom: 6px;
+      }
+      @include desktop {
+        color: black(0.8);
+        font-size: 18px;
+      }
+    }
+    span.description {
+      display: block;
+      font-size: 15px;
+      color: black(0.6);
+
+      @include desktop {
+        font-size: 15px;
+      }
+    }
+  }
+
+  // Works
+  // --------------------------------------------------
+
+  section.works {
+    grid-area: works;
+    margin-bottom: 32px;
+
+    h1 {
+      font-size: 5.4vw;
+      font-weight: 600;
+      color: $blue;
+      margin-bottom: 12px;
+      background: $gradient-blue-pink;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @include phablet {
+        font-size: 24px;
+        font-weight: 400;
+      }
+      @include desktop {
+        font-size: 36px;
+        margin-top: 12px;
+        letter-spacing: 0.8px;
+      }
+    }
+    p {
+      margin-bottom: 20px;
+    }
+    a.resume-and-portfolio-link {
+      display: block;
+      border-radius: 4px;
+      overflow: hidden;
+
+      @include phablet {
+        margin-bottom: 8px;
+      }
+      @include tablet {
+        margin-bottom: 20px;
+      }
+      @include desktop {
+        margin-bottom: 32px;
+      }
+      // transition: box-shadow 0.3s ease-in-out;
+      //
+      // &:hover {
+      //   box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      // }
+      .button {
+        padding: 12px 24px;
+        background: $gradient-blue-pink;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include tablet {
+          padding: 20px 24px;
+        }
+        span.text {
+          font-size: 14px;
+          letter-spacing: 1px;
+          color: white;
+          text-transform: uppercase;
+
+          @include phablet {
+            font-size: 16px;
+          }
+          @include desktop {
+            font-size: 18px;
+          }
+        }
+        span.circle-divider {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          margin: 0 8px;
+          background-color: white;
+
+          @include tablet {
+            margin: 0 12px;
+          }
+        }
+      }
+    }
+  }
+
+  // Footer
+  // --------------------------------------------------
+
+  footer {
+    grid-area: footer;
+    position: relative;
+    padding: 24px 0;
+    margin: 0 -4px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    @include desktop {
+      padding: 32px 0;
+    }
+    span.text {
+      margin: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: black(0.4);
+      text-transform: uppercase;
+
+      @include desktop {
+        font-size: 14px;
+      }
+    }
+    span.circle-divider {
+      display: none;
+      width: 4px;
+      height: 4px;
+      margin: 4px;
+      border-radius: 50%;
+      background-color: black(0.08);
+
+      @include tablet {
+        display: block;
+        margin: 0 12px;
+        background-color: black(0.16);
+      }
+    }
+    .rotated-background {
+      transform: skewY(0deg);
+    }
+  }
+}
