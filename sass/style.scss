@@ -12,6 +12,7 @@
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700');
 
 
 // ----------------------------------------------------------------------------
@@ -21,13 +22,25 @@
 
 // Fonts
 $main-font-family: "Open Sans", sans-serif;
-$main-font-size: 18px;
+$secondary-font-family: "Nunito", sans-serif;
+$main-font-size: 15px;
 
 // Colors
-$blue: #4083FF;
-$pink: #A24AFF;
-$gradient-blue-pink: linear-gradient(to bottom right, #4083FF, #A24AFF);
-$gradient-pink-blue: linear-gradient(to bottom right, #A24AFF, #4083FF);
+$primary-purple: #7166FF;
+$primary-dark-purple: #5A52CC;
+$primary-blue: #4083FF;
+$primary-dark-blue: #3369CC;
+$primary-pink: #A24AFF;
+$primary-dark-pink: #813BCC;
+$secondary-blue: #D6FFFF;
+$secondary-yellow: #FFFCCB;
+$secondary-red: #FFE0E0;
+
+// Gradients
+$primary-gradient: linear-gradient(to bottom right, $primary-blue, $primary-pink);
+$primary-dark-gradient: linear-gradient(to bottom right, $primary-dark-blue, $primary-dark-pink);
+$primary-gradient-reverse: linear-gradient(to bottom right, $primary-pink, $primary-blue);
+$secondary-gradient: linear-gradient(to bottom right, $secondary-blue, $secondary-yellow);
 
 
 // ----------------------------------------------------------------------------
@@ -49,6 +62,8 @@ $gradient-pink-blue: linear-gradient(to bottom right, #A24AFF, #4083FF);
 // ----------------------------------------------------------------------------
 
 
+// Media Quaries
+
 @mixin desktop {
   @media screen and (min-width: 1280px) {
     @content;
@@ -61,41 +76,212 @@ $gradient-pink-blue: linear-gradient(to bottom right, #A24AFF, #4083FF);
   }
 }
 
+@mixin only-tablet {
+  @media screen and (min-width: 768px) and (max-width: 999px) {
+    @content;
+  }
+}
+
 @mixin phablet {
   @media screen and (min-width: 460px) {
     @content;
   }
 }
 
+@mixin only-phablet {
+  @media screen and (min-width: 460px) and (max-width: 767px) {
+    @content;
+  }
+}
 
-// ----------------------------------------------------------------------------
-// Styles
-// ----------------------------------------------------------------------------
+@mixin only-mobile {
+  @media screen and (max-width: 459px) {
+    @content;
+  }
+}
 
+// Fonts
 
-html {
+@mixin primary-font {
   font: 400 $main-font-size $main-font-family;
+  letter-spacing: 0.3px;
+  color: black(0.87);
+
+  @include tablet {
+    font-size: 16px;
+    color: black(0.8);
+  }
+  @include desktop {
+    font-size: 18px;
+    letter-spacing: 0.4px;
+  }
+}
+
+@mixin gradient-text {
+  color: $primary-purple;
+  background: $primary-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin bordered-button-text($gradient-text: true) {
+  font-family: $secondary-font-family;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  @if $gradient-text {
+    @include gradient-text;
+  }
+  @include desktop {
+    font-size: 18px;
+  }
+}
+
+@mixin ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+// ----------------------------------------------------------------------------
+// Shared Styles
+// ----------------------------------------------------------------------------
+
+
+div, span, h1, h2, a {
+  font: 400 $main-font-size $secondary-font-family;
+  letter-spacing: 0.6px;
 }
 img {
   max-width: 100%;
 }
 a {
   text-decoration: none;
+  &:hover {cursor: pointer;}
 }
-p {
-  font-size: 15px;
+h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  @include gradient-text;
+
+  @include phablet {
+    font-size: 24px;
+    font-weight: 400;
+  }
+  @include tablet {
+    font-size: 28px;
+  }
+  @include desktop {
+    font-size: 36px;
+  }
+}
+h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: black(0.6);
+  text-transform: uppercase;
+
+  @include tablet {
+    font-size: 16px;
+  }
+  @include desktop {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+}
+strong {
+  font-weight: 600;
+}
+p, p > a {
+  padding: 0;
+  margin: 0;
+  font: 400 $main-font-size $main-font-family;
   letter-spacing: 0.3px;
   line-height: 1.5;
   color: black(0.87);
 
   @include tablet {
     font-size: 16px;
-    line-height: 1.5;
     color: black(0.8);
   }
   @include desktop {
     font-size: 18px;
     letter-spacing: 0.4px;
+  }
+}
+p > a {
+  color: $primary-purple;
+  // font-weight: 600;
+  &:hover { text-decoration: underline; }
+}
+.account-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @include phablet {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  @include tablet {
+    max-width: 128px + 16px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    justify-self: center;
+  }
+  @include desktop {
+    padding: 0;
+  }
+  a {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: $primary-gradient-reverse;
+    overflow: hidden;
+
+    @include tablet {
+      margin: 8px;
+    }
+    div {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  a.linkedin div {
+    @include use-sprite("linkedin");
+    &:hover { background-color: #0077b5; }
+  }
+  a.medium div {
+    @include use-sprite("medium");
+    &:hover { background-color: #12100E; }
+  }
+  a.github div {
+    @include use-sprite("github");
+    &:hover { background-color: #181717; }
+  }
+  a.twitter div {
+    @include use-sprite("twitter");
+    &:hover { background-color: #1DA1F2; }
+  }
+  a.instagram div {
+    @include use-sprite("instagram");
+    &:hover { background-color: #E4405F; }
+  }
+  a.lastfm div {
+    @include use-sprite("lastfm");
+    &:hover { background-color: #D51007; }
+  }
+  .rotated-background {
+    @include tablet {
+      display: none;
+    }
   }
 }
 .rotated-background {
@@ -108,22 +294,78 @@ p {
   z-index: -1;
   transform: skewY(-1deg);
 }
+.extended-background {
+  position: absolute;
+  top: 0;
+  left: calc(-50vw + 50%);
+  width: 100vw;
+  height: 100%;
+  background-color: black(0.02);
+  z-index: -1;
+}
+.uppercase-title {
+  margin: 0;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  color: black(0.6);
 
-// Site
-// --------------------------------------------------
+  @include desktop {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+}
+.bordered-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: 4px;
+  border: 2px solid black(0.04);
+
+  span.icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+  span.text {
+    @include bordered-button-text;
+  }
+  &:hover {
+    padding: 14px 16px;
+    border: none;
+    background: $secondary-gradient;
+  }
+}
+span.circle-divider {
+  width: 4px;
+  height: 4px;
+  margin: 4px;
+  border-radius: 50%;
+  background-color: black(0.16);
+}
+
+
+// ----------------------------------------------------------------------------
+// Index.html
+// ----------------------------------------------------------------------------
+
 
 .site {
   margin: 0px auto;
   max-width: 380px;
-  padding: 32px 20px 0 20px;
+  padding: 0 20px;
   @supports (grid-area: auto) {
     display: grid;
     grid-template-columns: 184fr 116fr;
     grid-template-rows: auto;
     grid-column-gap: 20px;
     grid-template-areas:
+      "notifications notifications"
       "title avatar"
-      "account-links account-links"
+      "intro-links intro-links"
       "intro intro"
       "articles articles"
       "works works"
@@ -131,12 +373,12 @@ p {
   }
   @include tablet {
     max-width: 640px;
-    padding-top: 48px;
     @supports (grid-area: auto) {
       grid-template-columns: repeat(4, 1fr);
       grid-template-areas:
+        "notifications notifications notifications notifications"
         "title title title avatar"
-        "intro intro intro account-links"
+        "intro intro intro intro-links"
         "articles articles articles articles"
         "works works works works"
         "footer footer footer footer";
@@ -144,86 +386,44 @@ p {
   }
   @include desktop {
     max-width: 940px;
-    padding-top: 64px;
   }
 
-  // Avatar
+  // Announcement
   // --------------------------------------------------
 
-  img.avatar {
-    grid-area: avatar;
-    max-height: 128px;
-
-    @include tablet {
-      max-height: 220px;
-      justify-self: center;
-    }
-  }
-
-  // Account-links
-  // --------------------------------------------------
-
-  section.account-links {
+  section.notifications {
     position: relative;
-    padding: 20px 0;
-    margin: 28px 0 20px 0;
-    grid-area: account-links;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    grid-area: notifications;
+    padding: 16px 20px;
+    margin: 0 -20px;
+    margin-bottom: 20px;
 
+    @include phablet {
+      margin-bottom: 32px;
+    }
     @include tablet {
-      max-width: 128px + 16px;
-      padding: 8px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-      align-content: flex-start;
-      justify-content: center;
-      justify-self: center;
+      margin-bottom: 48px;
     }
     @include desktop {
-      padding: 0;
+      margin-bottom: 96px;
     }
-    a {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: $gradient-pink-blue;
-      overflow: hidden;
+    .extended-background {
+      background-color: rgba($secondary-blue, 0.6);
+    }
+    p {
+      color: black(0.7);
+    }
+    p.long {
+      display: none;
 
       @include tablet {
-        margin: 8px;
+        display: block;
       }
-      div {
-        width: 100%;
-        height: 100%;
+      @include only-tablet {
+        letter-spacing: 0;
       }
     }
-    a.linkedin div {
-      @include use-sprite("linkedin");
-      &:hover { background-color: #0077b5; }
-    }
-    a.medium div {
-      @include use-sprite("medium");
-      &:hover { background-color: #12100E; }
-    }
-    a.github div {
-      @include use-sprite("github");
-      &:hover { background-color: #181717; }
-    }
-    a.twitter div {
-      @include use-sprite("twitter");
-      &:hover { background-color: #1DA1F2; }
-    }
-    a.instagram div {
-      @include use-sprite("instagram");
-      &:hover { background-color: #E4405F; }
-    }
-    a.lastfm div {
-      @include use-sprite("lastfm");
-      &:hover { background-color: #D51007; }
-    }
-    .rotated-background {
+    p.short {
       @include tablet {
         display: none;
       }
@@ -244,53 +444,137 @@ p {
       justify-content: flex-start;
     }
     span.name {
-      display: block;
-      font-size: 4.7vw;
-      letter-spacing: 0.3px;
-      color: black(0.87);
       margin: 0;
+      margin-bottom: 6px;
+      font-size: 4.7vw;
+      color: black(0.6);
 
       @include phablet {
         font-size: 18px;
-        color: black(0.6);
       }
       @include desktop {
-        font-size: 24px;
         margin-bottom: 4px;
+        font-size: 24px;
+        font-weight: 300;
       }
     }
     h1.profession {
-      font-size: 5.4vw;
-      font-weight: 600;
-      color: $blue;
-      margin-top: 6px;
-      margin-bottom: 16px;
-      background: $gradient-blue-pink;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      margin-top: 0;
+      margin-bottom: 14px;
 
-      @include phablet {
-        font-size: 24px;
-        font-weight: 400;
+      @include only-mobile {
+        font-size: 5.4vw;
+      }
+      @include only-phablet {
+        padding-right: 6px;
       }
       @include desktop {
-        font-size: 36px;
         margin-top: 0;
-        margin-bottom: 20px;
-        letter-spacing: 0.8px;
+        margin-bottom: 16px;
       }
     }
     .short-line {
-      width: 10vw;
+      width: 46px;
       height: 2px;
       border-radius: 1px;
-      background-color: $blue;
+      background-color: black(0.16);
 
-      @include phablet {
-        width: 38px;
-      }
       @include desktop {
-        width: 57px;
+        width: 54px;
+      }
+    }
+  }
+
+  // Avatar
+  // --------------------------------------------------
+
+  .avatar {
+    position: relative;
+    grid-area: avatar;
+    justify-self: end;
+
+    @include tablet {
+      justify-self: center;
+    }
+    img.main {
+      border-radius: 50%;
+      max-height: 128px;
+
+      @include tablet {
+        max-height: 220px;
+      }
+    }
+    img.background {
+      position: absolute;
+      top: calc(-12.7% / 2);
+      left: calc(-12.7% / 2);
+      width: 112.7%;
+      max-width: none;
+      z-index: -1;
+    }
+  }
+
+  // Intro-links
+  // --------------------------------------------------
+
+  section.intro-links {
+    margin-top: 24px;
+    grid-area: intro-links;
+    display: flex;
+    flex-direction: column;
+
+    @include phablet {
+      margin-top: 32px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    @include tablet {
+      justify-self: center;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+    @include desktop {
+      margin-top: 48px;
+      align-items: stretch;
+    }
+    .resume {
+      display: block;
+      padding: 4px 16px;
+      margin-bottom: 16px;
+      border-radius: 4px;
+      border: 2px solid $primary-purple;
+      @include bordered-button-text($gradient-text: false);
+      font-size: 16px;
+      text-align: center;
+      color: $primary-purple;
+
+      &:hover {
+        padding: 6px 16px;
+        border: none;
+        background: $primary-gradient-reverse;
+        color: white;
+      }
+      @include phablet {
+        border-radius: 200px;
+        margin-right: 16px;
+        margin-bottom: 0;
+        padding-top: 3px;
+        padding-bottom: 2px;
+
+        &:hover {
+          padding: 0 18px;
+          padding-top: 5px;
+          padding-bottom: 4px;
+        }
+      }
+      @include tablet {
+        margin: 0 8px;
+      }
+    }
+    .account-links {
+      @include tablet {
+        margin-top: 12px;
       }
     }
   }
@@ -300,18 +584,25 @@ p {
 
   section.intro {
     grid-area: intro;
+    margin-top: 24px;
 
+    @include phablet {
+      margin-top: 32px;
+    }
     @include tablet {
-      margin-top: -48px;
+      margin-top: -26px;
     }
     @include desktop {
-      margin-top: -80px;
+      margin-top: -68px;
     }
     p {
-      margin: 8px 0;
+      margin: 0;
 
       @include tablet {
         padding-right: 28px;
+      }
+      @include desktop {
+        padding-right: 64px;
       }
     }
     p:not(:last-child) {
@@ -330,18 +621,19 @@ p {
     position: relative;
     grid-area: articles;
     padding: 32px 0;
-    margin: 20px 0;
+    margin-top: 24px;
 
     @include tablet {
-      margin: 32px 0;
-      padding: 42px 0;
+      margin-top: 42px;
+      padding: 48px 0;
       display: flex;
       justify-content: space-between;
       align-items: stretch;
     }
     @include desktop {
-      padding: 64px 0;
-      margin: 48px 0;
+      padding-top: 64px;
+      padding-bottom: 104px;
+      margin-top: 48px;
     }
     .big {
       flex-grow: 1;
@@ -353,28 +645,23 @@ p {
       }
       @include desktop {
         margin-right: 40px;
-        margin-bottom: 16px;
       }
       .uppercase-title {
         display: block;
         float: left;
         margin-bottom: 16px;
-        text-transform: uppercase;
-        font-size: 14px;
-        font-weight: 600;
-        color: black(0.6);
 
         @include desktop {
-          font-size: 16px;
+          margin-bottom: 20px;
         }
       }
       a.uppercase-title {
         float: right;
         color: black(0.4);
+
         &:hover {
           color: black(0.6);
         }
-
         @include tablet {
           float: left;
           margin-left: 24px;
@@ -383,13 +670,18 @@ p {
       a.featured {
         display: block;
 
+        &:hover {
+          img {
+            @include filter(brightness(96%));
+          }
+          span.title {
+            text-decoration: underline;
+          }
+        }
         @include desktop {
-          padding: 16px;
-          margin: -16px;
-          margin-top: 18px + 20px;
+          float: left;
+          clear: both;
           border-radius: 4px;
-          background-color: white;
-          border: 1px solid black(0.04);
         }
         img {
           margin-bottom: 12px;
@@ -409,16 +701,29 @@ p {
         flex-direction: column;
         justify-content: space-between;
       }
+      @include desktop {
+        padding-top: 43px;
+        margin-left: 40px;
+      }
       .divider {
         background-color: black(0.08);
         width: 100%;
         height: 1px;
+        margin: 16px 0;
       }
       a {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
+        &:hover {
+          span.title {
+            text-decoration: underline;
+          }
+          img {
+            @include filter(brightness(92%));
+          }
+        }
         &:first-child {
           margin-top: 0;
           padding-top: 0;
@@ -428,13 +733,11 @@ p {
           flex-shrink: 0;
           margin-left: 16px;
           border-radius: 4px;
-        }
-      }
-      .last {
-        display: none;
+          width: 54px;
 
-        @include desktop {
-          display: flex;
+          @include tablet {
+            margin-left: 20px;
+          }
         }
       }
     }
@@ -455,11 +758,33 @@ p {
     }
     span.description {
       display: block;
+      font-family: $main-font-family;
       font-size: 15px;
+      letter-spacing: 0.3px;
       color: black(0.6);
 
       @include desktop {
         font-size: 15px;
+      }
+    }
+    >.divider {
+      display: none;
+      position: absolute;
+      left: 0;
+      bottom: 54px;
+      width: 64px;
+      height: 1px;
+      background-color: black(0.16);
+
+      @include desktop {
+        display: block;
+      }
+    }
+    .rotated-background {
+      background: $secondary-gradient;
+
+      @include desktop {
+        opacity: 0.6;
       }
     }
   }
@@ -469,81 +794,239 @@ p {
 
   section.works {
     grid-area: works;
-    margin-bottom: 32px;
+    margin-top: 32px;
 
-    h1 {
-      font-size: 5.4vw;
-      font-weight: 600;
-      color: $blue;
-      margin-bottom: 12px;
-      background: $gradient-blue-pink;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      @include phablet {
-        font-size: 24px;
-        font-weight: 400;
-      }
-      @include desktop {
-        font-size: 36px;
-        margin-top: 12px;
-        letter-spacing: 0.8px;
-      }
+    @include tablet {
+      margin-top: 58px;
     }
-    p {
-      margin-bottom: 20px;
-    }
-    a.resume-and-portfolio-link {
-      display: block;
-      border-radius: 4px;
-      overflow: hidden;
+    .header {
+      display: flex;
+      flex-direction: column;
 
-      @include phablet {
-        margin-bottom: 8px;
-      }
       @include tablet {
+        flex-direction: row;
+      }
+      h2 {
+        @include desktop {
+          margin-bottom: 20px;
+        }
+      }
+      .title {
         margin-bottom: 20px;
-      }
-      @include desktop {
-        margin-bottom: 32px;
-      }
-      // transition: box-shadow 0.3s ease-in-out;
-      //
-      // &:hover {
-      //   box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-      // }
-      .button {
-        padding: 12px 24px;
-        background: $gradient-blue-pink;
-        display: flex;
-        justify-content: center;
-        align-items: center;
 
         @include tablet {
-          padding: 20px 24px;
+          margin-bottom: 0;
+          margin-right: 40px;
+          flex-basis: 0;
+          flex-grow: 1;
         }
-        span.text {
-          font-size: 14px;
-          letter-spacing: 1px;
-          color: white;
-          text-transform: uppercase;
+        @include desktop {
+          flex-basis: 380px;
+          margin-right: 80px;
+        }
+      }
+      .pdf-version {
+        @include tablet {
+          flex-basis: 0;
+          flex-grow: 1;
+        }
+        @include desktop {
+          flex-basis: 478px;
+        }
+        h2 {
+          color: black(0.4);
+        }
+        a.resume-and-portfolio-button {
+          span.icon {
+            @include use-sprite("resume");
+          }
+        }
+      }
+    }
+    .divider {
+      display: none;
+      width: 100%;
+      height: 1px;
+      background-color: black(0.06);
 
-          @include phablet {
-            font-size: 16px;
+      @include tablet {
+        display: block;
+        margin-top: 42px;
+      }
+      @include desktop {
+        margin-top: 48px;
+      }
+    }
+    .work-items {
+      margin-top: 32px;
+
+      @include tablet {
+        margin-top: 40px;
+      }
+      @include desktop {
+        margin-top: 64px;
+      }
+      a.work-item {
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+
+        @include tablet {
+          margin-top: 48px;
+        }
+        @include desktop {
+          margin-top: 96px;
+        }
+        &:first-child {
+          margin-top: 0;
+        }
+        &:hover {
+          position: relative;
+
+          img {
+            @include filter(brightness(94%));
           }
-          @include desktop {
-            font-size: 18px;
+          h1.title {
+            // text-decoration: underline; // Doesn't work in some browsers.
+            // background: $primary-dark-gradient;
+            // -webkit-background-clip: text;
+            // -webkit-text-fill-color: transparent;
+          }
+          span.see-more {
+            // text-decoration: underline;
+            color: $primary-purple !important;
+          }
+          .container:before {
+            left: -20px;
+            opacity: 1;
+
+            @include desktop {
+              left: -24px;
+            }
           }
         }
-        span.circle-divider {
-          width: 4px;
-          height: 4px;
-          border-radius: 50%;
-          margin: 0 8px;
-          background-color: white;
+        .image {
+          position: relative;
+          margin: 0 calc((100vw - 100%) / -2);
+          // width: 100vw;
+          max-width: none;
 
           @include tablet {
-            margin: 0 12px;
+            order: 10;
+            margin-top: 24px;
+          }
+          @media screen and (min-width: 940px) {
+            margin: 0 calc((940px - 100%) / -2);
+            margin-top: 24px;
+            width: 940px;
+          }
+          .frame {
+            display: none;
+            pointer-events: none;
+
+            @media screen and (min-width: 940px) {
+              display: block;
+              position: absolute;
+              top: 0px;
+              right: 0px;
+              bottom: 0px;
+              left: 0px;
+              border-radius: 4px;
+              border: 1px solid black(0.04);
+            }
+          }
+          img {
+            transition: 0.3s;
+            width: 100%;
+
+            @media screen and (min-width: 940px) {
+              border-radius: 4px;
+            }
+          }
+        }
+        .container {
+          position: relative;
+          margin-top: 20px;
+          display: flex;
+          flex-direction: column;
+
+          &:before {
+            $margin: 4px;
+            position: absolute;
+            content: "";
+            top: 0;
+            left: -20px - $margin;
+            bottom: 0;
+            width: 2px;
+            border-radius: 6px;
+            background-color: $primary-blue;
+            opacity: 0;
+            transition: all 0.2s ease-out;
+            transition-property: left, opacity;
+
+            @include desktop {
+              left: -24px - $margin;
+              width: 3px;
+            }
+          }
+          @include tablet {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+          }
+          @include desktop {
+            margin-top: 0px;
+          }
+          .sub-container {
+            flex-shrink: 0;
+
+            span {
+              display: block;
+              font-family: $main-font-family;
+              font-size: 12px;
+              color: black(0.6);
+              letter-spacing: 0.3px;
+
+              @include tablet {
+                text-align: right;
+              }
+              @include desktop {
+                font-size: 15px;
+                letter-spacing: 0.4px;
+              }
+            }
+            span.time {
+              font-weight: 600;
+            }
+            span.short-description {
+              margin-top: 4px;
+            }
+          }
+          h1.title {
+            margin-top: 16px;
+            margin-bottom: 0;
+
+            @include tablet {
+              margin-top: 0;
+              margin-right: 16px;
+            }
+          }
+        }
+        p.description {
+          margin-top: 8px;
+
+          @include tablet {
+            margin-top: 24px;
+          }
+          span.see-more {
+            font: inherit;
+            color: $primary-purple;
+            font-weight: 600;
+
+            @include tablet {
+              color: black(0.4);
+              font-weight: inherit;
+            }
           }
         }
       }
@@ -556,44 +1039,500 @@ p {
   footer {
     grid-area: footer;
     position: relative;
-    padding: 24px 0;
-    margin: 0 -4px;
+    margin-top: 40px;
+    padding: 32px 0;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
 
     @include desktop {
-      padding: 32px 0;
+      margin-top: 64px;
+      padding: 48px 0;
     }
-    span.text {
-      margin: 4px;
+    .container {
+      display: flex;
+      flex-direction: column;
+
+      @include tablet {
+        flex-direction: row;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 12px;
+        color: black(0.4);
+
+        @include desktop {
+          margin-bottom: 16px;
+        }
+      }
+      .contact {
+        margin-bottom: 24px;
+
+        @include tablet {
+          margin-bottom: 0;
+          margin-right: 40px;
+          flex-basis: 0;
+          flex-grow: 1;
+        }
+        @include desktop {
+          flex-grow: 2;
+        }
+        a.send-mail-button {
+          background-color: white;
+          border: 1px solid black(0.06);
+          transition: box-shadow 0.3s ease-out;
+
+          &:hover {
+            padding: 12px 16px;
+            background: white;
+            box-shadow: 0 4px 8px black(0.08);
+          }
+          span.icon {
+            @include use-sprite("mail");
+          }
+        }
+      }
+      .follow-me {
+        @include tablet {
+          flex-basis: 0;
+          flex-grow: 1;
+        }
+        @include desktop {
+          flex-grow: 1;
+        }
+        h2 {
+          @include desktop {
+            margin-bottom: 18px;
+          }
+        }
+        .account-links {
+          max-width: none;
+        }
+      }
+    }
+    .divider {
+      margin: 32px 0;
+      width: 100%;
+      height: 1px;
+      background-color: black(0.06);
+
+      @include desktop {
+        margin: 48px 0;
+      }
+    }
+    .footer-texts {
+      margin: 0 -4px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      @include desktop {
+
+      }
+      span.text {
+        margin: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        color: black(0.4);
+        text-transform: uppercase;
+
+        @include desktop {
+          font-size: 14px;
+        }
+      }
+      span.circle-divider {
+        display: none;
+        background-color: black(0.08);
+
+        @include tablet {
+          display: block;
+          margin: 0 12px;
+          background-color: black(0.16);
+        }
+      }
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------------
+// Works / hellotalk.html
+// ----------------------------------------------------------------------------
+
+
+.site.work {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+
+  // Work-navigation
+  // --------------------------------------------------
+
+  nav.work-navigation {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      margin-top: 32px;
+    }
+    @include desktop {
+      margin-top: 48px;
+    }
+    a, span:not(.circle-divider) {
       font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.3px;
+      font-weight: 700;
       color: black(0.4);
       text-transform: uppercase;
 
+      @include tablet {
+        font-size: 15px;
+      }
       @include desktop {
-        font-size: 14px;
+        font-size: 16px;
+        font-weight: 600;
       }
     }
-    span.circle-divider {
-      display: none;
-      width: 4px;
-      height: 4px;
-      margin: 4px;
-      border-radius: 50%;
-      background-color: black(0.08);
+    a {
+      &:hover {
+        color: black(0.6);
+      }
+    }
+    div {
+      display: flex;
+      align-items: center;
+
+      span:not(.circle-divider) {
+        color: black(0.16);
+      }
+      span.circle-divider {
+        margin: 0 12px;
+      }
+    }
+  }
+
+  // Work-description
+  // --------------------------------------------------
+
+  section.work-description {
+    margin-top: 32px;
+
+    @include tablet {
+      margin-top: 48px;
+    }
+    @include desktop {
+      margin-top: 64px;
+    }
+    .short-info {
+      display: flex;
+      flex-direction: column;
 
       @include tablet {
-        display: block;
-        margin: 0 12px;
-        background-color: black(0.16);
+        flex-direction: row;
+        align-items: center;
+      }
+      span {
+        @include primary-font;
+        line-height: 1.5;
+        color: black(0.6) !important;
+      }
+      span.circle-divider {
+        display: none;
+
+        @include tablet {
+          display: block;
+          margin: 0 12px;
+          margin-top: 1px;
+        }
       }
     }
-    .rotated-background {
-      transform: skewY(0deg);
+    h1.title {
+      margin-top: 8px;
+
+      @include desktop {
+        margin-top: 16px;
+      }
+    }
+    p.description {
+      margin-top: 16px;
+
+      @include tablet {
+        margin-top: 24px;
+      }
+      @include desktop {
+        margin-top: 32px;
+      }
+    }
+    .tools-used {
+      margin-top: 20px;
+
+      @include tablet {
+        margin-top: 24px;
+      }
+      @include desktop {
+        margin-top: 32px;
+      }
+      .items {
+        font-size: 0; // Prevent white spaces.
+        margin: -4px;
+        margin-top: 8px;
+
+        @include tablet {
+          margin-top: 12px;
+        }
+        @include desktop {
+          margin-top: 16px;
+        }
+        span {
+          display: inline-block;
+          padding: 5px 12px 6px 12px;
+          margin: 4px;
+          @include primary-font;
+          font-weight: 600;
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          color: black(0.6);
+          background-color: black(0.02);
+          border: 1px solid black(0.1);
+          border-radius: 4px;
+
+          @include tablet {
+            padding: 6px 16px 7px 16px;
+            font-size: 14px;
+            color: black(0.6);
+          }
+        }
+      }
+    }
+  }
+
+  // Showcase
+  // --------------------------------------------------
+
+  section.showcase {
+    margin-top: 20px;
+
+    @include tablet {
+      margin-top: 28px;
+    }
+    @include desktop {
+      margin-top: 36px;
+    }
+    .images {
+      margin: 0 calc((100vw - 100%) / -2);
+      margin-top: 4px;
+      padding: 8px;
+      width: calc(100vw - 8px * 2);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-column-gap: 8px;
+      grid-row-gap: 16px;
+
+      @include tablet {
+        margin-top: 8px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-row-gap: 20px;
+      }
+      @include desktop {
+        padding: 16px;
+        margin: 0 calc((1280px - 100%) / -2);
+        width: calc(1280px - 16px * 2);
+        margin-top: 4px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-column-gap: 16px;
+        grid-row-gap: 32px;
+      }
+      .image {
+        position: relative;
+
+        .frame {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          bottom: 0px;
+          left: 0px;
+          border: 1px solid black(0.06);
+          pointer-events: none;
+          z-index: 2;
+        }
+      }
+      .image.video {
+        .overlay {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          bottom: 0px;
+          left: 0px;
+          // pointer-events: none;
+          background-color: black(0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .icon {
+            @include use-sprite("video-overlay");
+            width: 128px;
+            height: 128px;
+            transform: scale(0.5);
+            z-index: 2;
+
+            @include phablet {
+              transform: scale(0.7);
+            }
+            @include tablet {
+              transform: scale(0.8);
+            }
+            @include desktop {
+              transform: scale(1);
+            }
+          }
+          .bg {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            background-color: black(0.2);
+            z-index: 1;
+          }
+          img {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  footer {
+    margin-top: 20px;
+
+    @include phablet {
+      margin-top: 32px;
+    }
+    @include tablet {
+      margin-top: 48px;
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------------
+// Works / noodl.html
+// ----------------------------------------------------------------------------
+
+
+.site.work.noodl {
+
+  // Showcase
+  // --------------------------------------------------
+
+  section.showcase {
+    .images {
+      padding: 0;
+      margin-top: 12px;
+      width: 100vw;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "g1"
+        "g2"
+        "g3"
+        "g4"
+        "g5"
+        "g6";
+
+      @include tablet {
+        padding: 8px;
+        margin-top: 8px;
+        width: calc(100vw - 8px * 2);
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "g1 g2"
+          "g3 g3"
+          "g4 g5"
+          "g6 g6";
+      }
+      @include desktop {
+        padding: 16px;
+        margin: 0 calc((100vw - 100%) / -2);
+        margin-top: 4px;
+        width: calc(100vw - 16px * 2);
+        justify-items: center;
+      }
+      @media screen and (min-width: 1488px) {
+        margin: 0 calc((1488px - 100%) / -2);
+        margin-top: 4px;
+        width: calc(1488px - 16px * 2);
+      }
+      .image.video > .overlay {
+        .icon {
+          @include use-sprite("video-overlay-colored");
+        }
+        .bg {
+          background-color: black(0);
+        }
+      }
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------------
+// Works / languru.html
+// ----------------------------------------------------------------------------
+
+
+.site.work.languru {
+
+  // Showcase
+  // --------------------------------------------------
+
+  section.showcase {
+    .images {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "g1 g2"
+        "g3 g3"
+        "g4 g5"
+        "g6 g6"
+        "g7 g8"
+        "g9 g9"
+        "g10 g10";
+
+      @include tablet {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+          "g1 g2 g3 g3"
+          "g1 g2 g3 g3"
+          "g4 g5 g3 g3"
+          "g4 g5 g6 g6"
+          "g7 g8 g6 g6"
+          "g7 g8 g6 g6"
+          "g9 g9 g10 g10";
+      }
+      @include desktop {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+          "g1 g2 g3 g3"
+          "g1 g2 g3 g3"
+          "g4 g5 g3 g3"
+          "g4 g5 g6 g6"
+          "g7 g8 g6 g6"
+          "g7 g8 g6 g6"
+          "g9 g9 g10 g10";
+      }
+      // .image.video > .overlay {
+      //   .icon {
+      //     @include use-sprite("video-overlay-colored");
+      //   }
+      //   .bg {
+      //     background-color: black(0.4);
+      //   }
+      // }
     }
   }
 }

@@ -1,5 +1,6 @@
+
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" dir='ltr' lang='en'>
 
 <head>
   <meta charset="utf-8">
@@ -14,9 +15,6 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-  <script>
-    // document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
-  </script>
 </head>
 
 <body>
@@ -25,16 +23,10 @@
   <![endif]-->
 
   <div class="site">
-    <img class="avatar" src="img/avatar.jpg" srcset="img/avatar@2x.jpg 2x">
-
-    <section class="account-links">
-      <a href="https://www.linkedin.com/in/einancunlu/" target="_blank" class="linkedin"><div></div></a>
-      <a href="https://medium.com/@einancunlu" target="_blank" class="medium"><div></div></a>
-      <a href="https://github.com/einancunlu" target="_blank" class="github"><div></div></a>
-      <a href="https://twitter.com/einancunlu" target="_blank" class="twitter"><div></div></a>
-      <a href="https://instagram.com/einancunlu" target="_blank" class="instagram"><div></div></a>
-      <a href="https://www.last.fm/user/einancunlu" target="_blank" class="lastfm"><div></div></a>
-      <div class="rotated-background"></div>
+    <section class="notifications">
+      <p class="long"><strong>I’m currently open for job opportunities! </strong>If you’re searching someone like me, let’s have a talk!</p>
+      <p class="short"><strong>I’m currently open for job opportunities!</strong></p>
+      <div class="extended-background"></div>
     </section>
 
     <section class="title">
@@ -43,17 +35,34 @@
       <div class="short-line"></div>
     </section>
 
+    <div class="avatar">
+      <img class="main" src="img/avatar.jpg" srcset="img/avatar@2x.jpg 2x">
+      <img class="background" src="img/avatar-bg.jpg" srcset="img/avatar-bg@2x.jpg 2x">
+    </div>
+
+    <section class="intro-links">
+      <a href="files/resume.pdf" class="resume">Resume</a>
+      <div class="account-links">
+        <a href="https://www.linkedin.com/in/einancunlu/" target="_blank" class="linkedin"><div></div></a>
+        <a href="https://medium.com/@einancunlu" target="_blank" class="medium"><div></div></a>
+        <a href="https://github.com/einancunlu" target="_blank" class="github"><div></div></a>
+        <a href="https://twitter.com/einancunlu" target="_blank" class="twitter"><div></div></a>
+        <a href="https://instagram.com/einancunlu" target="_blank" class="instagram"><div></div></a>
+        <a href="https://www.last.fm/user/einancunlu" target="_blank" class="lastfm"><div></div></a>
+      </div>
+    </section>
+
     <section class="intro">
-      <p>Hello, I am a self-taught Product Designer with a degree in Computer Science and various coding experience. I love working on UI and UX.</p>
-      <p>Besides the other things, I like writing on Medium, traveling the world, working on side projects, contributing to the community and go for hiking.</p>
+      <p>Hello, I am a self-taught Product Designer with a degree in Computer Science and various coding experience. My passion is designing and I love working on UI & UX.</p>
+      <p>Besides the other things, I like writing on Medium, traveling the world, going for hiking, working on side projects and contributing to the community.</p>
       <p>Some of my articles and Sketch plugins were featured on various newsletters like Sketch, Designer News, Hey Designer and Indie iOS Dev Weekly.</p>
     </section>
 
     <section class="articles">
       <div class="big">
         <span class="uppercase-title">Featured Articles</span>
-        <a href="https://medium.com/@einancunlu" target="_blank" class="uppercase-title">See All</a>
-        <a href="https://medium.com/sketch-app-sources/exploration-of-responsive-design-in-sketch-part-1-1af4cf415a82" target="_blank" class="featured">
+        <a class="uppercase-title" href="https://medium.com/@einancunlu" target="_blank">See All</a>
+        <a class="featured" href="https://medium.com/sketch-app-sources/exploration-of-responsive-design-in-sketch-part-1-1af4cf415a82" target="_blank">
           <img src="img/articles/thumbnail1.jpg" srcset="img/articles/thumbnail1@2x.jpg 2x">
           <span class="title">Responsive Design in Sketch — Part 1</span>
           <span class="description">What is new in the group resizing feature.</span>
@@ -68,7 +77,9 @@
           </div>
           <img src="img/articles/thumbnail2.jpg" srcset="img/articles/thumbnail2@2x.jpg 2x">
         </a>
+
         <div class="divider"></div>
+
         <a href="https://blog.prototypr.io/noodl-app-521f8028fcb2" target="_blank">
           <div class="labels">
             <span class="title">Noodl Prototyping App</span>
@@ -76,58 +87,119 @@
           </div>
           <img src="img/articles/thumbnail3.jpg" srcset="img/articles/thumbnail3@2x.jpg 2x">
         </a>
-        <div class="divider last"></div>
-        <a class="last" href="https://medium.com/sketch-app-sources/mastering-group-resizing-feature-in-sketch-38266286155" target="_blank">
-          <div class="labels">
-            <span class="title">Mastering Group Resizing Feature in Sketch</span>
-            <span class="description">From basic to advanced techniques to design responsively.</span>
-          </div>
-          <img src="img/articles/thumbnail4.jpg" srcset="img/articles/thumbnail4@2x.jpg 2x">
-        </a>
       </div>
+
+      <div class="divider"></div>
 
       <div class="rotated-background"></div>
     </section>
 
     <section class="works">
-      <h1>Featured Works</h1>
-      <p>This section is still under development. You can view my resume and portfolio from the link below until it's completed.</p>
-      <a href="http://einancunlu.github.io/files/ResumeAndPortfolio.pdf" class="resume-and-portfolio-link">
-        <img src="img/resume-and-portfolio-preview.jpg" srcset="img/resume-and-portfolio-preview@2x.jpg 2x">
-        <div class="button">
-          <span class="text">PDF</span>
-          <span class="circle-divider"></span>
-          <span class="text">Resume & Portfolio</span>
+      <div class="header">
+        <div class="title">
+          <h2 class="uppercase-title">Featured Works</h2>
+          <p>You can find some of my works here. Click on them to see more details.</p>
         </div>
-      </a>
+
+        <div class="pdf-version">
+          <h2 class="uppercase-title">Need PDF version?</h2>
+          <a class="bordered-button resume-and-portfolio-button" href="files/resume-and-portfolio.pdf">
+            <span class="icon"></span>
+            <span class="text">Resume & Portfolio (PDF)</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="work-items">
+        <a class="work-item" href="works/hellotalk.html">
+          <div class="image">
+            <div class="frame"></div>
+            <img src="img/works/hellotalk/hero-image.jpg" srcset="img/works/hellotalk/hero-image@2x.jpg 2x">
+          </div>
+          <div class="container">
+            <div class="sub-container">
+              <span class="time">2015 - 2017</span>
+              <span class="short-description">As Product Designer at HelloTalk</span>
+            </div>
+            <h1 class="title">HelloTalk App UI & UX Redesign</h1>
+          </div>
+          <p class="description">HelloTalk is a language learning & exchange app with more than 6 million users worldwide. I worked on the redesign of the interface and the designs for the new features. <span class="see-more">See more…</span></p>
+        </a>
+
+        <a class="work-item" href="works/noodl.html">
+          <div class="image">
+            <div class="frame"></div>
+            <img src="img/works/noodl/hero-image.jpg" srcset="img/works/noodl/hero-image@2x.jpg 2x">
+          </div>
+          <div class="container">
+            <div class="sub-container">
+              <span class="time">2017</span>
+              <span class="short-description">Side Project</span>
+            </div>
+            <h1 class="title">Concept Design for Noodl</h1>
+          </div>
+          <p class="description">Noodl is a node-based prototyping app. I added some major new features and polished the UI & UX. I used Framer to prototype this concept design in order to show my ideas in action. <span class="see-more">See the videos…</span></p>
+        </a>
+
+        <a class="work-item" href="works/languru.html">
+          <div class="image">
+            <div class="frame"></div>
+            <img src="img/works/languru/hero-image.jpg" srcset="img/works/languru/hero-image@2x.jpg 2x">
+          </div>
+          <div class="container">
+            <div class="sub-container">
+              <span class="time">2014 - 2015</span>
+              <span class="short-description">Personal Project</span>
+            </div>
+            <h1 class="title">Languru — Universal iOS App</h1>
+          </div>
+          <p class="description">Languru is a language learning and dictionary app for searching phrases to find definitions and human translated real-life example sentences. Coded in Swift and used adaptive design. <span class="see-more">See more…</span></p>
+        </a>
+      </div>
     </section>
 
     <footer>
-      <span class="text">Designed and developed with love</span>
-      <span class="circle-divider"></span>
-      <span class="text">Sketch, Atom, CSS Grid</span>
-      <div class="rotated-background"></div>
+      <div class="container">
+        <div class="contact">
+          <h2 class="uppercase-title">Feel Free to Contact</h2>
+          <a class="bordered-button send-mail-button" href="admin [at] example.com" rel="nofollow" onclick="this.href='mailto:' + 'einancunlu' + '@' + 'gmail.com'">
+            <span class="icon"></span>
+            <span class="text">Send an Email</span>
+          </a>
+        </div>
+
+        <div class="follow-me">
+          <h2 class="uppercase-title">Follow Me</h2>
+          <div class="account-links">
+            <a href="https://www.linkedin.com/in/einancunlu/" target="_blank" class="linkedin"><div></div></a>
+            <a href="https://medium.com/@einancunlu" target="_blank" class="medium"><div></div></a>
+            <a href="https://github.com/einancunlu" target="_blank" class="github"><div></div></a>
+            <a href="https://twitter.com/einancunlu" target="_blank" class="twitter"><div></div></a>
+            <a href="https://instagram.com/einancunlu" target="_blank" class="instagram"><div></div></a>
+            <a href="https://www.last.fm/user/einancunlu" target="_blank" class="lastfm"><div></div></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="footer-texts">
+        <span class="text">Designed and developed with love</span>
+        <span class="circle-divider"></span>
+        <span class="text">Sketch, Atom, CSS Grid</span>
+      </div>
+
+      <div class="extended-background"></div>
     </footer>
   </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="js/main.js"></script>
 
-  <!-- Google Analytics -->
-  <script>
-    (function(b, o, i, l, e, r) {
-      b.GoogleAnalyticsObject = l;
-      b[l] || (b[l] =
-        function() {
-          (b[l].q = b[l].q || []).push(arguments)
-        });
-      b[l].l = +new Date;
-      e = o.createElement(i);
-      r = o.getElementsByTagName(i)[0];
-      e.src = '//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e, r)
-    }(window, document, 'script', 'ga'));
-    ga('create', 'UA-34242159-4', 'auto');
-    ga('send', 'pageview');
+  <script type="text/javascript">
+
   </script>
 </body>
 
