@@ -8,11 +8,14 @@
 // If Internet Explorer
 // --------------------------------------------------
 
-var ua = window.navigator.userAgent;
-var old_ie = ua.indexOf('MSIE ');
-var new_ie = ua.indexOf('Trident/');
+function isIE() {
+  var userAgent = navigator.userAgent;
+  return userAgent.indexOf("MSIE ") > -1
+  || userAgent.indexOf("Trident/") > -1
+  || userAgent.indexOf("Edge/") > -1;
+}
 
-if ((old_ie > -1) || (new_ie > -1)) { // IF IE
+if (isIE()) {
   $(".ie-support").css("display", "block");
 }
 
