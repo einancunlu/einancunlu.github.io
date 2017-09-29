@@ -17,7 +17,7 @@ function isIE() {
 
 if (isIE()) {
   $(".ie-support").css("display", "block");
-  $("section.avatar").css("display", "none");
+  $(".avatar").css("display", "none");
   $("section.intro").css("margin-top", "0");
 }
 
