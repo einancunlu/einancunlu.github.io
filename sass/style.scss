@@ -220,7 +220,8 @@ p > a {
   // font-weight: 600;
   &:hover { text-decoration: underline; }
 }
-.browser-support {
+.ie-support {
+  display: none;
   padding: 12px 20px 16px;
   margin-bottom: 1px;
   background-color: $secondary-yellow;
