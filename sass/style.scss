@@ -220,6 +220,23 @@ p > a {
   // font-weight: 600;
   &:hover { text-decoration: underline; }
 }
+.browser-support {
+  padding: 12px 20px 16px;
+  margin-bottom: 1px;
+  background-color: $secondary-yellow;
+
+  p {
+    max-width: 380px;
+    margin: 0 auto;
+
+    @include tablet {
+      max-width: 640px;
+    }
+    @include desktop {
+      max-width: 940px;
+    }
+  }
+}
 .account-links {
   display: flex;
   justify-content: space-between;
