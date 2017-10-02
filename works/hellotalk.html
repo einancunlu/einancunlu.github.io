@@ -63,78 +63,115 @@
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-01.png">
         </div>
-        <div class="image">
+
+        <div id="video-01" class="image video">
           <div class="frame"></div>
-          <img src="../img/works/hellotalk/screenshot-02.png">
+
+          <div class="overlay">
+            <div class="icon"></div>
+            <div class="bg"></div>
+            <img src="../img/works/hellotalk/screenshot-02.png">
+          </div>
+
+          <video width="100%" height="auto" poster="../img/works/hellotalk/screenshot-02.png" preload>
+           <source src="../img/works/hellotalk/video-01.mp4" type="video/mp4">
+          </video>
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-03.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-04.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-05.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-06.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-07.png">
         </div>
-        <div class="image">
+
+        <div id="video-02" class="image video">
           <div class="frame"></div>
-          <img src="../img/works/hellotalk/screenshot-08.png">
+
+          <div class="overlay">
+            <div class="icon"></div>
+            <div class="bg"></div>
+            <img src="../img/works/hellotalk/screenshot-08.png">
+          </div>
+
+          <video width="100%" height="auto" poster="../img/works/hellotalk/screenshot-08.png" preload>
+           <source src="../img/works/hellotalk/video-02.mp4" type="video/mp4">
+          </video>
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-09.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-10.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-11.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-12.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-13.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-14.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-15.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-16.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-17.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-18.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-19.png">
         </div>
+
         <div class="image">
           <div class="frame"></div>
           <img src="../img/works/hellotalk/screenshot-20.png">
@@ -179,6 +216,13 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="../js/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      setupVideo("#video-01");
+      setupVideo("#video-02");
+    });
+  </script>
 </body>
 
 </html>
