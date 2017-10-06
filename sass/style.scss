@@ -1376,6 +1376,9 @@ span.circle-divider {
           pointer-events: none;
           z-index: 2;
         }
+        img {
+          width: 100%;
+        }
       }
       .image.video {
         .overlay {
