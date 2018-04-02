@@ -150,9 +150,14 @@ $secondary-gradient: linear-gradient(to bottom right, $secondary-blue, $secondar
 // ----------------------------------------------------------------------------
 
 
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 div, span, h1, h2, a {
   font: 400 $main-font-size $secondary-font-family;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.4px;
 }
 img {
   max-width: 100%;
